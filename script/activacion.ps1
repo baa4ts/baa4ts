@@ -7,15 +7,18 @@ function reporte {
             $mensaje
         ) 
         
+        # Asegúrate de que los saltos de línea estén presentes con `n
         $body = @{
             content = $mensaje
         }
 
-        Invoke-RestMethod -Uri $webhook -Method Post -Body ($body | ConvertTo-Json) -ContentType "application/json"
+        # Convertimos el mensaje a JSON y lo enviamos
+        $jsonData = $body | ConvertTo-Json -Depth 3
+        
+        Invoke-RestMethod -Uri $webhook -Method Post -Body $jsonData -ContentType "application/json; charset=utf-8"
     }
     catch {
         Write-Host "Ocurrió un error al enviar el reporte"
-        Exit
     }
 }
 
@@ -27,13 +30,13 @@ while ($check -eq 1) {
         # Verifica si la carpeta existe, y si no, la crea
         if (-not (Test-Path $root)) {
             New-Item -Path $root -ItemType Directory
-            reporte "Se creó la carpeta en $root"
+            reporte "Se creó la carpeta en $root`nLa ruta es $root"
         }
         else {
-            reporte "La carpeta ya existe en $root"
+            reporte "La carpeta ya existe en $root`nLa ruta es $root"
         }
     }
     catch {
-        reporte "REPORTE: ERROR"
+        reporte "REPORTE: ERROR`n$($_.Exception.Message)"
     }
 }

@@ -1,63 +1,60 @@
 $check = 1
 $reportes = @()
+$webhook = "https://discord.com/api/webhooks/1345942563156393994/BDkrnul-xcAlgRjHjROWTfB17ZS7HSKvtXeaFWESO-NJQfc4JAfjPb-KO2ZXRQWIM9nX"
 
-function reporte {
+# Función para enviar reportes a Discord
+function Enviar-Reporte {
+    param (
+        [string]$mensaje
+    )
+
     try {
-        $webhook = "https://discord.com/api/webhooks/1345942563156393994/BDkrnul-xcAlgRjHjROWTfB17ZS7HSKvtXeaFWESO-NJQfc4JAfjPb-KO2ZXRQWIM9nX"
-        
-        param (
-            [string]$mensaje
-        )
-        
-        # Formato del mensaje con comillas invertidas para el bloque de código
+        # Formato del mensaje para Discord
         $contenido = @"
-        \```
-        $mensaje
-        \```
-        "@
+```
+$mensaje
+```
+"@
 
-        # Crea el cuerpo del mensaje con contenido que incluye las comillas invertidas
+        # Cuerpo del mensaje en formato JSON
         $body = @{
             content = $contenido
-        }
+        } | ConvertTo-Json -Depth 3
 
-        # Convertir el cuerpo a JSON
-        $jsonData = $body | ConvertTo-Json -Depth 3
-        
-        # Enviar el mensaje al webhook de Discord
-        Invoke-RestMethod -Uri $webhook -Method Post -Body $jsonData -ContentType "application/json; charset=utf-8"
+        # Envío del mensaje a Discord
+        Invoke-RestMethod -Uri $webhook -Method Post -Body $body -ContentType "application/json; charset=utf-8"
     }
     catch {
-        # Capturar errores
-        Write-Host "Error: $($_.Exception.Message)"
-        Exit
+        # Manejo de errores en el envío a Discord
+        Write-Error "Error al enviar reporte a Discord: $($_.Exception.Message)"
     }
 }
 
+# Bucle principal para la verificación de la carpeta
 while ($check -eq 1) {
     try {
+        # Ruta de la carpeta "Proton" en AppData local
         $root = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Proton"
 
-        # Verifica si la carpeta existe, y si no, la crea
+        # Verifica si la carpeta existe
         if (-not (Test-Path $root)) {
+            # Crea la carpeta si no existe
             New-Item -Path $root -ItemType Directory
-
-            # Añadir reporte si no se encuentra la carpeta
-            $reportes.Add("La carpeta 'Proton' no estaba presente, se ha creado.")
+            $reportes += "La carpeta 'Proton' no existía y ha sido creada."
         }
 
-        # Ocultar la carpeta
+        # Oculta la carpeta
         Set-ItemProperty -Path $root -Name Attributes -Value Hidden
+        $reportes += "La carpeta 'Proton' existe o ha sido creada y oculta."
 
-        # Verificación exitosa
-        $reportes.Add("La carpeta 'Proton' existe o ha sido creada y oculta exitosamente.")
-
+        # Envía todos los reportes acumulados a Discord
+        if ($reportes.Count -gt 0) {
+            $reportes | ForEach-Object { Enviar-Reporte -mensaje $_ }
+            $reportes = @() # Limpia el array de reportes después de enviarlos
+        }
     }
     catch {
-        # Enviar reporte de error
-        reporte "REPORTE: ERROR`n$($_.Exception.Message)"
+        # Manejo de errores en la verificación/creación de la carpeta
+        Enviar-Reporte -mensaje "REPORTE: ERROR`n$($_.Exception.Message)"
     }
-
-    # Pausa o lógica adicional (por ejemplo, esperar un tiempo antes de volver a verificar)
-    Start-Sleep -Seconds 10
 }

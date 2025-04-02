@@ -1,60 +1,49 @@
 $check = 1
 $reportes = @()
-$webhook = "https://discord.com/api/webhooks/1345942563156393994/BDkrnul-xcAlgRjHjROWTfB17ZS7HSKvtXeaFWESO-NJQfc4JAfjPb-KO2ZXRQWIM9nX"
 
-# Función para enviar reportes a Discord
-function Enviar-Reporte {
-    param (
-        [string]$mensaje
-    )
-
+function reporte {
     try {
-        # Formato del mensaje para Discord
-        $contenido = @"
-```
-$mensaje
-```
-"@
+        $webhook = "https://discord.com/api/webhooks/1345942563156393994/BDkrnul-xcAlgRjHjROWTfB17ZS7HSKvtXeaFWESO-NJQfc4JAfjPb-KO2ZXRQWIM9nX"
+        
+        param (
+            $mensaje
+        ) 
+        
 
-        # Cuerpo del mensaje en formato JSON
+
         $body = @{
-            content = $contenido
-        } | ConvertTo-Json -Depth 3
+            content = '``` Hola mundo ```'
+        }
 
-        # Envío del mensaje a Discord
-        Invoke-RestMethod -Uri $webhook -Method Post -Body $body -ContentType "application/json; charset=utf-8"
+        $jsonData = $body | ConvertTo-Json -Depth 3
+        
+        Invoke-RestMethod -Uri $webhook -Method Post -Body $jsonData -ContentType "application/json; charset=utf-8"
     }
     catch {
-        # Manejo de errores en el envío a Discord
-        Write-Error "Error al enviar reporte a Discord: $($_.Exception.Message)"
+        Exit
     }
 }
 
-# Bucle principal para la verificación de la carpeta
 while ($check -eq 1) {
     try {
-        # Ruta de la carpeta "Proton" en AppData local
+
         $root = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Proton"
 
-        # Verifica si la carpeta existe
+        # Verifica si la carpeta existe, y si no, la crea
         if (-not (Test-Path $root)) {
-            # Crea la carpeta si no existe
             New-Item -Path $root -ItemType Directory
-            $reportes += "La carpeta 'Proton' no existía y ha sido creada."
-        }
 
-        # Oculta la carpeta
+            $reportes.Add("")
+        }
+        
+        # Ocultar carpeta
         Set-ItemProperty -Path $root -Name Attributes -Value Hidden
-        $reportes += "La carpeta 'Proton' existe o ha sido creada y oculta."
 
-        # Envía todos los reportes acumulados a Discord
-        if ($reportes.Count -gt 0) {
-            $reportes | ForEach-Object { Enviar-Reporte -mensaje $_ }
-            $reportes = @() # Limpia el array de reportes después de enviarlos
-        }
+
+        # Verificacion
+
     }
     catch {
-        # Manejo de errores en la verificación/creación de la carpeta
-        Enviar-Reporte -mensaje "REPORTE: ERROR`n$($_.Exception.Message)"
+        reporte "REPORTE: ERROR`n$($_.Exception.Message)"
     }
 }

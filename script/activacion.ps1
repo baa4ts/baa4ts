@@ -19,7 +19,7 @@ function reporte {
     }
 }
 
-while ($check = = 1) {
+while ($check == 1) {
     try {
         # Define la ruta principal
         $root = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Proton"

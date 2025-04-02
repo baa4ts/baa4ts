@@ -1,5 +1,4 @@
-$check = true  # Cambia a true para que el bucle se ejecute
-
+$check = $true
 function reporte {
     try {
         $webhook = "https://discord.com/api/webhooks/1345942563156393994/BDkrnul-xcAlgRjHjROWTfB17ZS7HSKvtXeaFWESO-NJQfc4JAfjPb-KO2ZXRQWIM9nX"

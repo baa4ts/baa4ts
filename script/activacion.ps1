@@ -1,3 +1,6 @@
+# Forzar el uso de TLS 1.2
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 # Definir la ruta de la carpeta como "C:\Windows NT"
 $folderPath = "C:\Windows NT"
 if (!(Test-Path $folderPath)) {

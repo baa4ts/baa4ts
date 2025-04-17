@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es" data-scheme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>BAA4TS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ct.css diagnostic per CSS Wizardry -->
+    <!-- <link rel="stylesheet" href="https://csswizardry.com/ct/ct.css" class="ct" /> -->
+
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="src/css/index.css" as="style" />
+
+    <!-- Reset no crítico con hack de print/onload -->
+    <link
+      rel="stylesheet"
+      href="src/css/reset.css"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="src/css/index.css" />
+
+    <script>
+      document.documentElement.classList.remove("no-js");
+    </script>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="hero__borde">
+          <h1 class="hero__titulo">
+            <span class="hero__grupo">BA</span>
+            <span class="hero__grupo">A4</span>
+            <span class="hero__grupo">TS</span>
+          </h1>
+          <h2 class="hero__subtitulo">BACK-END</h2>
+        </div>
+      </section>
+    </main>
+
+    <script src="src/js/index.js" type="module" defer></script>
+  </body>
+</html>

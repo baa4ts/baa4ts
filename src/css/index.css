@@ -1,0 +1,97 @@
+/* Fuentes personalizadas */
+@font-face {
+  font-family: "Neue Metana Next SemiBold";
+  src: url("../font/NeueMetanaNext-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Neue Metana Next Outline Black";
+  src: url("../font/NeueMetanaNextOutline-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Variables globales */
+:root {
+  --font-main: "Neue Metana Next SemiBold", sans-serif;
+  --color-light: rgb(242, 240, 227);
+  --color-dark: rgb(0, 0, 0);
+  --transition-slow: 0.7s ease-out;
+  --transition-medium: 0.6s ease-out;
+  --transition-fast: 0.5s ease-out;
+  --spacing: 20px;
+  --hero-title-mobile: 6rem;
+  --hero-title-tablet: 8rem;
+  --hero-title-desktop: 10rem;
+}
+
+/* Reset y base */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-family: var(--font-main);
+  transition: background-color var(--transition-slow);
+  transition: border-color var(--transition-slow);
+  scroll-behavior: smooth;
+  --border-color: var(--color-dark);
+}
+html[data-scheme="dark"] {
+  background-color: var(--color-dark);
+  --border-color: var(--color-light);
+  color: var(--color-light);
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.hero__titulo {
+  font-size: var(--hero-title-desktop);
+  margin: 0;
+  display: inline;
+  line-height: 1;
+}
+.hero__subtitulo {
+  font-size: 2rem;
+  margin-top: var(--spacing); /* Modificado con la variable */
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .hero__titulo {
+    font-size: var(--hero-title-mobile);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    margin: var(--spacing);
+  }
+  .hero__grupo {
+    display: block;
+  }
+  .hero__borde {
+    border: 1px solid var(--border-color);
+  }
+  .hero__subtitulo {
+    margin-left: var(--spacing);
+    margin-right: var(--spacing);
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero__titulo {
+    font-size: var(--hero-title-tablet);
+  }
+}

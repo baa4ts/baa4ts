@@ -4,4 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (sessionStorage.getItem("Esquema-colores-usuario") === "dark") {
     CambiarTema();
   }
+
+
+  document.getElementById('CambiarTema').addEventListener('click', () => {
+    CambiarTema();
+  })
 });

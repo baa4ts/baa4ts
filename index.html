@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html class="no-js" lang="es" data-scheme="light">
+<html lang="es" data-scheme="light" class="no-js">
   <head>
+    <!-- 1. Metadatos esenciales -->
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>BAA4TS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BAA4TS</title>
 
-    <!-- ct.css diagnostic per CSS Wizardry -->
-    <!-- <link rel="stylesheet" href="https://csswizardry.com/ct/ct.css" class="ct" /> -->
-
-    <!-- Preload critical CSS -->
-    <link rel="preload" href="src/css/index.css" as="style" />
-
-    <!-- Reset no crítico con hack de print/onload -->
+    <!-- 4. Preload y carga de CSS -->
+    <link rel="preload" as="style" href="src/css/index.css" />
     <link
       rel="stylesheet"
       href="src/css/reset.css"
       media="print"
       onload="this.media='all'"
     />
-
-    <!-- Main stylesheet -->
     <link rel="stylesheet" href="src/css/index.css" />
 
+    <!-- 5. Eliminación temprana de .no-js -->
     <script>
       document.documentElement.classList.remove("no-js");
     </script>
+
+    <!-- 6. JavaScript no bloqueante -->
+    <script src="src/js/load.js" async></script>
+    <link rel="modulepreload" href="src/js/index.js" />
+    <script type="module" defer src="src/js/index.js"></script>
   </head>
   <body>
     <main>
@@ -40,7 +39,5 @@
         </div>
       </section>
     </main>
-
-    <script src="src/js/index.js" type="module" defer></script>
   </body>
 </html>

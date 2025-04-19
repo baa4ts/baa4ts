@@ -216,7 +216,7 @@ html {
     font-size: 2rem;
 
     p {
-      font-size: 1.2rem;
+      font-size: 1rem;
       max-width: 500px;
       width: 100%;
     }
@@ -229,8 +229,9 @@ html {
   .menu__sub__opcion {
     font-size: 3.5rem;
 
+
     p {
-      font-size: 0.2rem;
+      font-size: 1.2rem;
       max-width: 500px;
       width: 100%;
     }
@@ -242,7 +243,7 @@ html {
     font-size: 4.6em;
 
     p {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       max-width: 500px;
       width: 100%;
     }

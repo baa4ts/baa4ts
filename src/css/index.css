@@ -260,10 +260,9 @@ html {
   transition: max-height 0.5s ease;
 }
 
-.menu__sub__opcion.activo p {
+/* .menu__sub__opcion.activo p {
   max-height: 200px;
-  /* suficiente para mostrar el contenido */
-}
+} */
 
 .color-lenguaje {
   color: #16C47F;

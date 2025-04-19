@@ -214,22 +214,74 @@ html {
 @media (max-width: 599px) {
   .menu__sub__opcion {
     font-size: 2rem;
+
+    p {
+      font-size: 1.2rem;
+      max-width: 500px;
+      width: 100%;
+    }
   }
+
+
 }
 
 @media (min-width: 600px) and (max-width: 1023px) {
   .menu__sub__opcion {
     font-size: 3.5rem;
+
+    p {
+      font-size: 0.2rem;
+      max-width: 500px;
+      width: 100%;
+    }
   }
 }
 
 @media (min-width: 1024px) {
   .menu__sub__opcion {
     font-size: 4.6em;
+
+    p {
+      font-size: 1.2rem;
+      max-width: 500px;
+      width: 100%;
+    }
   }
 }
 
 .menu__sub__opcion:hover {
-  color: var(--color-acento);
+  cursor: pointer;
+}
+
+
+.menu__sub__opcion p {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.menu__sub__opcion.activo p {
+  max-height: 200px;
+  /* suficiente para mostrar el contenido */
+}
+
+.color-lenguaje {
+  color: #16C47F;
+}
+
+.color-database {
+  color: #E73879;
+}
+
+.color-herramienta {
+  color: #FFD63A;
+}
+
+.color-autodidacta {
+  color: #FF0B55;
+}
+
+a {
+  all: unset;
   cursor: pointer;
 }

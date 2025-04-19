@@ -22,4 +22,19 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById('ScrollMenu').addEventListener('click', () => {
     ScrollHaciaElemento('Menu')
   })
+
+
+
+  document.querySelectorAll('.menu__sub__opcion h3').forEach((titulo) => {
+    titulo.addEventListener('click', () => {
+      document.querySelectorAll('.menu__sub__opcion').forEach((opcion) => {
+        if (opcion !== titulo.parentElement) {
+          opcion.classList.remove('activo');
+        }
+      });
+      titulo.parentElement.classList.toggle('activo');
+    });
+  });
+  
+
 });

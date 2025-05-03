@@ -1,0 +1,11 @@
+services:
+  base:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: usuario
+      MYSQL_DATABASE: usuario
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: usuario
+    ports:
+      - "3306:3306"

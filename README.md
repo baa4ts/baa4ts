@@ -7,12 +7,18 @@
 
 * 🛠️ **Desarrollador back-end** con conocimientos de front-end
 * 🎓 **Estudiando** Tecnicatura en Redes y Software
-* 💻 **Interesado en**: Python, PHP, JavaScript, Docker
-* ⚙️ **Tecnologías**: Python, PHP, JavaScript, HTML, CSS
-* 📊 **Bases de datos**: PostgreSQL, MySQL
-* 🧰 **Herramientas**: Git, Docker, Thunder Client
-* 🛡️ **Framework principal**: Django
-* 👨‍💻 **Autodidacta** en C++
+* 💻 **Interesado en**: ![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+
+* ⚙️ **Tecnologías**: ![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+
+* 📊 **Bases de datos**: ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+
+* 🧰 **Herramientas**: ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) ![Thunder Client](https://img.shields.io/badge/Thunder_Client-FF6C37?style=for-the-badge&logoColor=white)
+
+* 🛡️ **Framework principal**: ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+
+* 👨‍💻 **Autodidacta en**: ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+
 
 > [!Important]
 > ¿Por qué C++? Porque me gustan los "chetos" en los jueguitos 😎

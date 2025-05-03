@@ -2,84 +2,26 @@
 <html lang="es" data-scheme="light">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <title>BAA4TS</title>
 
-  <!-- Preload y carga de CSS -->
-  <link rel="preload" as="style" href="src/css/index.css" />
-  <link rel="stylesheet" href="src/css/reset.css" media="print" onload="this.media='all'" />
-  <link rel="stylesheet" href="src/css/index.css" />
+  <!-- JavaScript -->
+  <link rel="preload" href="/src/js/index.js" as="script" crossorigin="anonymous">
 
-  <!-- Eliminación temprana de .no-js -->
-  <script>
-    document.documentElement.classList.remove('no-js');
-  </script>
+  <!-- CSS -->
+  <link rel="preload" href="/src/css/reset.css" as="style">
+  <link rel="preload" href="/src/css/index.css" as="style">
 
-  <!-- JavaScript no bloqueante -->
-  <script src="src/js/load.js" async></script>
-  <link rel="modulepreload" href="src/js/index.js" />
-  <script type="module" defer src="src/js/index.js"></script>
+  <link rel="stylesheet" href="/src/css/reset.css">
+  <link rel="stylesheet" href="/src/css/index.css">
+  <script src="/src/js/index.js"></script>
+
+
 </head>
 
 <body>
-  <main>
-    <section class="control__tema">
-      <button id="ScrollTop" class="control__tema__button" type="button">↑</button>
-      <button id="CambiarTema" class="control__tema__button" type="button">
-        <span class="control__tema__button_dib"></span>
-      </button>
-    </section>
 
-    <section class="hero">
-      <div class="hero__borde">
-        <h1 class="hero__titulo">
-          <span class="hero__grupo">BA</span>
-          <span class="hero__grupo">A4</span>
-          <span class="hero__grupo">TS</span>
-        </h1>
-        <h2 class="hero__subtitulo">BACK‑END</h2>
-      </div>
-      <div id="ScrollMenu" class="hero__scrooll__button">
-        <h2>↓</h2>
-      </div>
-    </section>
-
-    <section id="Menu" class="menu">
-      <h1 class="Menu__title">Menu</h1>
-      <div class="menu__sub">
-        <div id="SobreMi" class="menu__sub__opcion">
-          <h3>Sobre Mi</h3>
-          <p>Hola, soy <span class="color-lenguaje">Carlos Morales</span>, un desarrollador back-end minimalista
-            especializado en <span class="color-database">Python y Django</span>. También
-            poseo conocimientos básicos de desarrollo web (<span class="color-lenguaje">HTML, CSS, JS</span>)</p>
-        </div>
-        <div id="Proyectos" class="menu__sub__opcion">
-          <h3>Proyectos</h3>
-          <p> . . . . Working . . . .</p>
-        </div>
-        <div id="Habilidades" class="menu__sub__opcion">
-          <h3>Habilidades</h3>
-          <p> <span class="color-lenguaje">Python</span>, <span class="color-lenguaje">JavaScript</span>,
-            <span class="color-lenguaje">HTML</span>,
-            <span class="color-lenguaje">CSS</span>,
-            <span class="color-database">MySQL</span>,
-            <span class="color-database">PostgreSQL</span>,
-            <span class="color-herramienta">Git</span>,
-            <span class="color-herramienta">Github</span>,
-            <span class="color-herramienta">Thunder Client</span>,
-            (<span class="color-autodidacta">Autodidacta</span>:
-            <span class="color-autodidacta">C++</span>, <span class="color-autodidacta">Arduino</span>)
-          </p>
-        </div>
-        <div id="Contacto" class="menu__sub__opcion">
-          <h3>Contacto</h3>
-          <p><a class="color-lenguaje" href="https://github.com/baa4ts">Github</a>, <a class="color-herramienta"
-              href="https://www.linkedin.com/in/carlos-morales-5735b9262/">Linkedin</a></p>
-        </div>
-      </div>
-    </section>
-  </main>
 </body>
 
 </html>

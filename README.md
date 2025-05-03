@@ -2,7 +2,7 @@
 <!--horizontal divider(gradiant)-->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-<picture> <img align="right" src="https://i.pinimg.com/736x/e6/ef/97/e6ef97085712c7a315320debb95e0cfd.jpg" width ="220px"></picture>
+<picture> <img align="right" src="https://i.pinimg.com/736x/e6/ef/97/e6ef97085712c7a315320debb95e0cfd.jpg" width ="220px" style="border-radius: 30px;"></picture>
 
 
 * 🛠️ **Desarrollador back-end** con conocimientos de front-end

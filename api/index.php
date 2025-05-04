@@ -1,17 +1,7 @@
 <?php
-$extensiones = get_loaded_extensions();
-sort($extensiones);
-
-echo "Extensiones PHP instaladas:\n";
-foreach ($extensiones as $ext) {
-    echo "- " . $ext . "\n";
-}
-
-
-// Mostrar configuración de OPcache
-print_r(opcache_get_configuration());
-
-// Mostrar estado actual de OPcache
-print_r(opcache_get_status());
+echo "Memory limit: " . ini_get('memory_limit') . "\n";
+echo "Max file uploads: " . ini_get('max_file_uploads') . "\n";
+echo "Upload max filesize: " . ini_get('upload_max_filesize') . "\n";
+echo "Post max size: " . ini_get('post_max_size') . "\n";
+echo "Max execution time: " . ini_get('max_execution_time') . "\n";
 ?>
-

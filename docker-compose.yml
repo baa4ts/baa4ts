@@ -1,11 +1,27 @@
 services:
-  base:
-    image: mysql:latest
-    restart: always
+  server-web:
+    build: 
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: server-web
+    volumes:
+      - ./api:/var/www/html
+    ports:
+      - "80:80"
+    depends_on:
+      - server-db
+
+  server-db:
+    build:
+      context: ./db
+      dockerfile  : Dockerfile
+    container_name: server-db
     environment:
       MYSQL_ROOT_PASSWORD: usuario
       MYSQL_DATABASE: usuario
       MYSQL_USER: usuario
       MYSQL_PASSWORD: usuario
+    volumes:
+      - ./db/data:/var/lib/mysql
     ports:
       - "3306:3306"

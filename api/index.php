@@ -17,5 +17,5 @@ foreach ($paths as $path) {
 if (!$found) {
     echo "❌ No se pudo encontrar la carpeta 'vendor'.";
 }else{
-    echo "SI"
+    echo "SI";
 }

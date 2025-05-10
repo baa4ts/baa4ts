@@ -4,6 +4,10 @@ FROM php:8.3.8-apache
 # xmlrpc: deprecated
 # Geoip: deprecated
 
+RUN a2enmod rewrite
+COPY default.conf /etc/apache2/sites-available/000-default.conf
+
+
 # Instalar dependencias de sistema, construir extensiones y limpiar cache en una sola capa
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -35,3 +39,6 @@ RUN apt-get update \
     # !!!!!
     && apt-get purge -y --auto-remove g++ make autoconf pkg-config libc-dev \
     && rm -rf /var/lib/apt/lists/* /tmp/pear
+
+
+COPY . /var/www/html

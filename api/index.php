@@ -1,32 +1,19 @@
 <?php
-require './vendor/autoload.php';  // Retrocede un directorio para cargar autoload.php
+$paths = [
+    __DIR__ . '/vendor',
+    dirname(__DIR__) . '/vendor',
+];
 
-use AltoRouter;
+$found = false;
 
-// Crear una instancia del enrutador
-$router = new AltoRouter();
+foreach ($paths as $path) {
+    if (is_dir($path)) {
+        require $path . '/autoload.php';
+        $found = true;
+        break;
+    }
+}
 
-// Definir algunas rutas
-$router->map('GET', '/', function() {
-    echo "Página de inicio";
-});
-
-$router->map('GET', '/hola', function() {
-    echo "¡Hola Mundo!";
-});
-
-$router->map('GET', '/usuario/[i:id]', function($vars) {
-    echo "Usuario con ID: " . $vars['id'];
-});
-
-// Obtener la ruta que coincide con la solicitud actual
-$match = $router->match();
-
-// Si hay una coincidencia y el objetivo es callable, lo ejecutamos
-if ($match && is_callable($match['target'])) {
-    call_user_func_array($match['target'], $match['params']);
-} else {
-    // En caso de que no haya coincidencia, mostramos un error 404
-    header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
-    echo 'Página no encontrada';
+if (!$found) {
+    echo "❌ No se pudo encontrar la carpeta 'vendor'.";
 }

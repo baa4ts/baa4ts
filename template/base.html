@@ -1,46 +1,50 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>BAA4TS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang="es" data-scheme="light">
 
-    <!-- Estilos -->
-    <link rel="stylesheet" href="{% static 'base.css' %}" />
-    <link rel="icon" href="https://avatars.githubusercontent.com/u/178568801?v=4" type="image/png" />
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>BAA4TS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- SEO básico -->
-    <meta name="description" content="Portafolio personal, idioma español" />
-    <meta name="keywords" content="programador backend, Django, Python, PHP" />
+  <!-- Estilos -->
+  <link rel="stylesheet" href="{% static 'base.css' %}" />
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/178568801?v=4" type="image/png" />
 
-    <!-- Open Graph (Facebook, Discord, WhatsApp, LinkedIn) -->
-    <meta property="og:title" content="baa4ts" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://baa4ts.is-a-good.dev" />
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/178568801?v=4" />
-    <meta property="og:description" content="Portafolio personal, idioma español" />
-    <meta property="og:site_name" content="baa4ts" />
-    <meta property="og:locale" content="es_ES" />
+  <!-- SEO básico -->
+  <meta name="description" content="Portafolio: baa4ts" />
+  <meta name="keywords" content="programador backend, Django, Python, PHP" />
 
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="baa4ts" />
-    <meta name="twitter:description" content="Portafolio personal, idioma español" />
-    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/178568801?v=4" />
-    <meta name="twitter:url" content="https://baa4ts.is-a-good.dev" />
-    <!-- Si tienes cuenta de Twitter, reemplaza @tu_usuario -->
-    {% comment %} <meta name="twitter:site" content="@tu_usuario" />
-    <meta name="twitter:creator" content="@tu_usuario" /> {% endcomment %}
+  <!-- Open Graph (Facebook, Discord, WhatsApp, LinkedIn) -->
+  <meta property="og:title" content="baa4ts" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://baa4ts.is-a-good.dev" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/178568801?v=4" />
+  <meta property="og:description" content="Portafolio personal, idioma español" />
+  <meta property="og:site_name" content="baa4ts" />
+  <meta property="og:locale" content="es_ES" />
 
-    {% block Headers %}
-    {% endblock %}
-  </head>
-  <body>
-    {% block Contenido %}
-    {% endblock %}
-    {% block Footer %}
-    {% endblock %}
-  </body>
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="baa4ts" />
+  <meta name="twitter:description" content="Portafolio personal, idioma español" />
+  <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/178568801?v=4" />
+  <meta name="twitter:url" content="https://baa4ts.is-a-good.dev" />
+  <!-- Si tienes cuenta de Twitter, reemplaza @tu_usuario -->
+  {% comment %}
+  <meta name="twitter:site" content="@tu_usuario" />
+  <meta name="twitter:creator" content="@tu_usuario" /> {% endcomment %}
+
+  {% block Headers %}
+  {% endblock %}
+</head>
+
+<body>
+  {% block Contenido %}
+  {% endblock %}
+  {% block Footer %}
+  {% endblock %}
+</body>
+
 </html>

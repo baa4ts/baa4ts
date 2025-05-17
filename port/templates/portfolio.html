@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block Headers %}
+  <link rel="stylesheet" href="{% static 'port/port.css' %}" />
+{% endblock %}
 {% block Contenido %}
-<h1>Hola</h1>
+  <section class="hero">
+    <div class="hero-font">
+      <H1>BAA4TS</H1>
+    </div>
+  </section>
 {% endblock %}

@@ -1,1 +1,97 @@
-*,::after,::before{box-sizing:border-box}*{margin:0}@media (prefers-reduced-motion:no-preference){html{interpolate-size:allow-keywords}}body{line-height:1.5;-webkit-font-smoothing:antialiased}canvas,img,picture,svg,video{display:block;max-width:100%}button,input,select,textarea{font:inherit}h1,h2,h3,h4,h5,h6,p{overflow-wrap:break-word}p{text-wrap:pretty}h1,h2,h3,h4,h5,h6{text-wrap:balance}#__next,#root{isolation:isolate}
+@font-face {
+    font-family: 'Dx-1';
+    src: url('DxKord-InktrapCompressed.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Dx-2';
+    src: url('DxKord-InktrapExpanded.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Dx-3';
+    src: url('DxKord-InktrapUltraExpanded.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+*,
+::after,
+::before {
+    box-sizing: border-box
+}
+
+* {
+    margin: 0
+}
+
+@media (prefers-reduced-motion:no-preference) {
+    html {
+        interpolate-size: allow-keywords
+    }
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased
+}
+
+canvas,
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    overflow-wrap: break-word
+}
+
+p {
+    text-wrap: pretty
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance
+}
+
+#__next,
+#root {
+    isolation: isolate
+}
+
+
+/* --------------------------------- */
+
+:root[data-scheme="light"] {
+    --bg-dark: black;
+}
+
+:root[data-scheme="dark"] {
+    --bg-dark: black;
+}

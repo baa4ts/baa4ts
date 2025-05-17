@@ -78,3 +78,6 @@ MANIFEST
 *.pid
 *.seed
 *.pid.lock
+
+
+**/static/

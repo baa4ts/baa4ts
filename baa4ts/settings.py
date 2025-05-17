@@ -2,23 +2,13 @@ from pathlib import Path
 from decouple import config
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Base
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-1^tmc$5t_w7p=w+84sq98t-t8yl6n4*^3vcaalhj860ired*m-'
-
 DEBUG = config("DEBUG", cast=bool)
-
 ALLOWED_HOSTS = ["vercel.app", "baa4ts.is-a-good.dev", "127.0.0.1"]
 
-
-# Application definition
-
+# Aplicaciones instaladas
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -26,8 +16,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog'
 ]
 
+# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -38,8 +30,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Configuración de URLs y WSGI
 ROOT_URLCONF = 'baa4ts.urls'
+WSGI_APPLICATION = 'baa4ts.wsgi.app'
 
+# Plantillas
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -55,12 +50,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'baa4ts.wsgi.app'
-
-
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+# Base de datos
 if DEBUG:
     DATABASES = {
         'default': {
@@ -71,9 +61,7 @@ if DEBUG:
 else:
     DATABASES = {}
 
-# Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
-
+# Validación de contraseñas
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -89,26 +77,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
-
+# Internacionalización
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
+# Archivos estáticos
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
+# Configuración adicional
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

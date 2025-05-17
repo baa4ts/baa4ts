@@ -6,7 +6,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "api/wsgi.py"
+      "dest": "baa4ts/wsgi.py"
     }
   ]
 }

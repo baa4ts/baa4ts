@@ -1,21 +1,29 @@
 {
-  "builds": [
-    {
-      "src": "baa4ts/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "public/static/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "baa4ts/wsgi.py"
-    }
-  ]
+    "version": 2,
+    "builds": [
+        {
+            "src": "baa4ts/wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb"
+            }
+        },
+        {
+            "src": "build_files.sh",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "staticfiles_build"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "versel_deploymet/wsgi.py"
+        }
+    ]
 }

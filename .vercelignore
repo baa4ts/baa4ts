@@ -1,9 +1,0 @@
-/.vscode
-.env
-*.sqlite3
-*.db
-*.sql3
-**/static/*
-**/static/
-LICENSE
-*.md

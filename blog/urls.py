@@ -1,7 +1,6 @@
 from django.urls import path
-from blog.views import VistaPortfolio
-
+from .views import VistaPortfolio
 
 urlpatterns = [
-    path('', VistaPortfolio.as_view(), name="Portafolio")
+    path('', VistaPortfolio.as_view(), name='Portafolio'),  # /blog/
 ]

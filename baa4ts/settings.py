@@ -6,7 +6,8 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1^tmc$5t_w7p=w+84sq98t-t8yl6n4*^3vcaalhj860ired*m-'
 DEBUG = config("DEBUG", cast=bool)
-ALLOWED_HOSTS = ["vercel.app", "baa4ts.is-a-good.dev", "127.0.0.1"]
+ALLOWED_HOSTS = ["*vercel.app", "vercel.app",
+                 "baa4ts.is-a-good.dev", "127.0.0.1"]
 
 # Aplicaciones instaladas
 INSTALLED_APPS = [

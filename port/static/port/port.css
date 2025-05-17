@@ -88,13 +88,15 @@
 @media (max-width: 599px) {
 
     .about-body-contenedor {
-        height: 100%;
+        height: 85%;
         width: 100%;
     }
 
     .about-body-contenedor {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        gap: 25px;
     }
 
     .about-body-contenedor-img {

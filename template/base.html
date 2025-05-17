@@ -4,16 +4,15 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
     <title>BAA4TS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Estilos -->
-    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'base.css' %}" />
+    <link rel="stylesheet" href="{% static 'base.css' %}" />
     <link rel="icon" href="https://avatars.githubusercontent.com/u/178568801?v=4" type="image/png" />
 
-    <!-- Meta SEO -->
-    <meta name="description" content="Portafolio personal baa4ts" />
+    <!-- SEO básico -->
+    <meta name="description" content="Portafolio personal, idioma español" />
     <meta name="keywords" content="programador backend, Django, Python, PHP" />
 
     <!-- Open Graph (Facebook, Discord, WhatsApp, LinkedIn) -->
@@ -31,16 +30,17 @@
     <meta name="twitter:description" content="Portafolio personal, idioma español" />
     <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/178568801?v=4" />
     <meta name="twitter:url" content="https://baa4ts.is-a-good.dev" />
+    <!-- Si tienes cuenta de Twitter, reemplaza @tu_usuario -->
     {% comment %} <meta name="twitter:site" content="@tu_usuario" />
-    <meta name="twitter:creator" content="@tu_usuario" />
-    {% endcomment %}
+    <meta name="twitter:creator" content="@tu_usuario" /> {% endcomment %}
+
     {% block Headers %}
     {% endblock %}
   </head>
   <body>
     {% block Contenido %}
     {% endblock %}
+    {% block Footer %}
+    {% endblock %}
   </body>
-  {% block Footer %}
-  {% endblock %}
 </html>

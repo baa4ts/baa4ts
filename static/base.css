@@ -1,25 +1,3 @@
-@font-face {
-    font-family: 'Dx-1';
-    src: url('/static/font/DxKord-InktrapCompressed.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Dx-2';
-    src: url('/static/font/DxKord-InktrapExpanded.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Dx-3';
-    src: url('/static/font/DxKord-InktrapUltraExpanded.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
 *,
 ::after,
 ::before {
@@ -29,6 +7,14 @@
 * {
     margin: 0
 }
+
+*,
+*::after,
+*::before {
+    transition: all 0.6s ease-out !important;
+    scroll-behavior: smooth;
+}
+
 
 @media (prefers-reduced-motion:no-preference) {
     html {
@@ -90,10 +76,74 @@ h6 {
 
 /* #181818 */
 
-:root[data-scheme="light"] {
-    --color-fondo: #181818;
+:root {
+    --col-black: rgb(0, 0, 0);
+    --col-white: rgb(255, 255, 255);
 }
 
 :root[data-scheme="dark"] {
-    --color-fondo: #EBDDC4;
+    --color-fondo: var(--col-black);
+    --color-titulo: var(--col-white);
+    --color-button: var(--col-white);
+    --color-inverso: var(--col-white);
+    --color-def: var(--col-black);
+}
+
+:root[data-scheme="light"] {
+    --color-fondo: var(--col-white);
+    --color-titulo: var(--col-black);
+    --color-button: var(var(--col-black));
+    --color-inverso: var(--col-black);
+    --color-def: var(--col-white);
+}
+
+
+body {
+    background-color: var(--color-fondo);
+}
+
+
+.TemeTogle {
+    height: 80px;
+    position: fixed;
+    width: 40px;
+    right: 15px;
+    bottom: 15px;
+}
+
+.TemeTogle {
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+:root[data-scheme="light"] {
+    .TemeTogle {
+        background-color: transparent;
+        border: 1px solid var(--color-inverso);
+    }
+}
+
+.Toggle-Item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+}
+
+.Toggle-Item {
+    background-color: var(--color-button);
+
+    img {
+        height: 25px;
+        width: 25px;
+    }
+}
+
+.Toggle-Item:nth-child(1) {
+    font-size: 25px;
+    font-weight: 900;
+    color: var(--col-black);
 }

@@ -31,10 +31,7 @@
   <meta name="twitter:description" content="Portafolio personal, idioma español" />
   <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/178568801?v=4" />
   <meta name="twitter:url" content="https://baa4ts.is-a-good.dev" />
-  <!-- Si tienes cuenta de Twitter, reemplaza @tu_usuario -->
-  {% comment %}
-  <meta name="twitter:site" content="@tu_usuario" />
-  <meta name="twitter:creator" content="@tu_usuario" /> {% endcomment %}
+
 
   {% block Headers %}
   {% endblock %}
@@ -43,8 +40,15 @@
 <body>
   {% block Contenido %}
   {% endblock %}
-  {% block Footer %}
-  {% endblock %}
+  <section class="TemeTogle">
+    <div class="Toggle-Item" id="HandleHero">↑</div>
+    <div class="Toggle-Item" id="HandleTema">
+      <img src="https://dirtylinestudio.com/wp-content/themes/dirtyline/assets/images/darkmode.png">
+    </div>
+  </section>
 </body>
+<script src="{% static 'base.js' %}"></script>
+{% block Scripts %}
+{% endblock %}
 
 </html>

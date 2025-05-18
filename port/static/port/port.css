@@ -109,3 +109,29 @@
     margin: 10px;
     font-family: monospace;
 }
+
+.Skills {
+    height: var(--h);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.Skills-titulos h1 {
+    text-align: center;
+    color: var(--color-inverso);
+    font-family: "Dx";
+    letter-spacing: 2.5px;
+}
+
+
+.Skills {
+    color: var(--color-inverso);
+}
+
+.Skills-skills {
+    font-family: monospace;
+}

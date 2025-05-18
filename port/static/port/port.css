@@ -20,7 +20,7 @@
     }
 }
 
-@media (min-width: 770px) {
+@media (min-width: 769px) {
     .Hero {
         font-size: 120px;
     }
@@ -60,8 +60,15 @@
 
 .About-Contenedor-Img img {
     width: auto;
-    height: 70%;
+    height: 65%;
     border-radius: 25px;
+}
+
+@media (max-width: 449px) {
+    .About-Contenedor {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .About-Contenedor {
@@ -91,12 +98,14 @@
     align-items: center;
 }
 
-.About-Contenedor-Texto{
+.About-Contenedor-Texto {
     color: var(--color-inverso);
+
     h2 {
         font-family: "Dx";
         letter-spacing: 2.5px;
     }
+
     margin: 10px;
     font-family: monospace;
 }

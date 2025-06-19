@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "preact/hooks";
+import starSvg from "./../../../assets/LOGO.svg";
 import gsap from "gsap";
 
 import arrowSvg from "./../../../assets/arrow.svg";
 
 export function Hero() {
-  const refButton = useRef(null);
+  const refArrow = useRef(null);
 
   useEffect(() => {
     gsap.fromTo(
@@ -12,25 +13,17 @@ export function Hero() {
       {
         opacity: 0,
         x: 0,
-        clipPath: "inset(0 100% 0 0)",
+        clipPath: "inset(100% 100% 0 0)",
       },
       {
         opacity: 1,
         x: 0,
-        clipPath: "inset(0 0% 0 0)",
+        clipPath: "inset(0% 0% 0 0)",
         duration: 1,
-        stagger: 0.15,
+        stagger: 0.2,
         ease: "power4.out",
       }
     );
-
-    gsap.to(refButton.current, {
-      y: -10,
-      duration: 0.7,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-    });
   }, []);
 
   const letras = ["B", "A", "A", "4", "T", "S"];
@@ -44,11 +37,9 @@ export function Hero() {
               {letra}
             </h1>
           ))}
+          <div></div>
         </div>
       </div>
-      <button className="HeroContenedorButton centrado">
-        <img ref={refButton} src={arrowSvg} alt="Flecha hacia abajo" />
-      </button>
     </section>
   );
 }

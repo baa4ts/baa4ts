@@ -1,55 +1,80 @@
-.Hero {
+/* Utilidades generales */
+.centrado {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.titulo {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  opacity: 0;
+}
+
+.subtitulo {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+
+/* Hero principal */
 .Hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100vh;
 }
 
+/* Contenedor interno */
 .HeroContenedor {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  flex-direction: column;
+  height: 60%;
+  width: 100%;
 }
 
+/* Título */
 .HeroTitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 5rem;
   font-family: monospace;
 }
 
-.HeroLogo {
-  position: absolute;
-  top: 50%;
-  left: 70%;
-  transform: translate(-50%, -50%);
+/* Texto del título */
+.textoTitulo {
+  font-size: 10rem;
 }
 
+/* Responsive */
 @media (max-width: 480px) {
-  .HeroTitle {
-    font-size: 2.8rem;
-  }
-  .HeroLogo {
-    left: 90%;
+  .textoTitulo {
+    font-size: 3.9rem;
   }
 }
 
 @media (min-width: 481px) and (max-width: 1023px) {
-  .HeroTitle {
-    font-size: 2.8rem;
-  }
-  .HeroLogo {
-    left: 70%;
+  .textoTitulo {
+    font-size: 4.9rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .contenedorVista {
-    width: 65%;
+  .textoTitulo {
+    font-size: 9rem;
   }
+}
+
+/* Botón con flecha */
+.HeroContenedorButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+  transition: all 0.6s ease-in-out;
+}
+
+.HeroContenedorButton img {
+  height: 48px;
+  width: 48px;
+  transition: all 0.6s ease-in-out;
 }

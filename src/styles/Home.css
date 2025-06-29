@@ -1,0 +1,46 @@
+:root {
+  --text: 10rem;
+  --text-col: white;
+  --text-font: "Poppins", "Segoe UI", sans-serif;
+}
+
+/* Responsive font sizing */
+@media (max-width: 600px) {
+  :root {
+    --text: 4rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 991px) {
+  :root {
+    --text: 8rem;
+  }
+}
+
+/* Hero section */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title */
+.heroTitulo {
+  font-family: var(--text-font);
+  font-size: var(--text);
+  color: var(--text-col);
+}
+
+.heroContenedorStats {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8vw;
+}
+
+.HeroContenenedorTitulo { text-align: center;}
+
+.heroContenedorStats {
+  color: white;
+}

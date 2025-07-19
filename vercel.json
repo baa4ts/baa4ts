@@ -1,12 +1,5 @@
 {
   "build": {
-    "env": {
-      "NODE_ENV": "production"
-    },
-    "onlyBuiltDependencies": [
-      "@swc/core",
-      "@tailwindcss/oxide",
-      "esbuild"
-    ]
+    "onlyBuiltDependencies": ["@swc/core", "@tailwindcss/oxide", "esbuild"]
   }
 }

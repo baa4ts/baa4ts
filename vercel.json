@@ -1,5 +1,0 @@
-{
-  "build": {
-    "onlyBuiltDependencies": ["@swc/core", "@tailwindcss/oxide", "esbuild"]
-  }
-}

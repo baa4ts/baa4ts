@@ -6,7 +6,7 @@ interface Props {
   filter?: boolean;
 }
 
-export const SkillCard = ({ src, name, filter = true }: Props): JSX.Element => {
+export const SkillCard = ({ src, name, filter }: Props): JSX.Element => {
   const style = filter ? 'h-12 w-12 object-contain filter brightness-0 invert' : 'h-12 w-12 object-contain';
 
   return (

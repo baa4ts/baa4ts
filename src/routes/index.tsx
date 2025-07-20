@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import type { JSX } from 'react';
 import { TitleCompo } from '../component/index/title';
 import { UserCompo } from '../component/index/user';
+import { SkillsCompo } from '../component/index/skills';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -15,7 +16,10 @@ function RouteComponent(): JSX.Element {
       <TitleCompo />
 
       {/* Seccion de img y bio */}
-      <UserCompo /> 
+      <UserCompo />
+
+      {/* Seccion de skills */}
+      <SkillsCompo /> 
     </main>
   );
 }

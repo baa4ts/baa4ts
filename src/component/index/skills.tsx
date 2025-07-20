@@ -33,7 +33,7 @@ export const SkillsCompo = (): JSX.Element => {
           {/* Studying Section */}
           <div className="flex flex-col md:w-1/2">
             <h3 className="mb-6 text-center font-poppins text-2xl font-semibold tracking-tight text-white">
-              Studing
+              Studying
             </h3>
             <section className="mb-5 flex flex-wrap gap-2">
               {iconResourceStudy.map((iconInfo) => (

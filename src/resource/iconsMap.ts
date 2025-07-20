@@ -26,7 +26,7 @@ export const iconResourceSkills: Icons[] = [
   },
   {
     filter: false,
-    name: 'JavaScript',
+    name: 'JavaScript (Frontend only)',
     path: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg',
     alt: 'Logo no oficial de JavaScript, el lenguaje de programación del lado del cliente más utilizado para crear experiencias web interactivas y dinámicas.',
   },

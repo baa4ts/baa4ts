@@ -38,7 +38,9 @@ export const UserCompo = (): JSX.Element => {
 
       <section ref={refUserText} className="basis-1/2 flex flex-col md:mt-10">
         <div className="flex flex-row">
-          <h2 className="text-white-cream-vanill ml-5 mt-5 text-3xl font-black font-poppins border-b-4 border-b-white-cream-vanill">Sobre mí</h2>
+          <h2 className="text-white-cream-vanill ml-5 mt-5 text-3xl font-black font-poppins border-b-4 border-b-white-cream-vanill">
+            Sobre mí
+          </h2>
         </div>
         <article className="mt-3.5 md:mt-0 mb-10">
           <p className="ml-5 mt-5 text-white font-poppins">
@@ -48,11 +50,11 @@ export const UserCompo = (): JSX.Element => {
             Actualmente estudiando la Tecnicatura en redes y software, y frontend para mejorar mis UI pedorras
             (<span style={{ color: '#61DAFB' }}>React</span>
             <span style={{ color: '#FFFFFF' }}>, </span>
+            <span style={{ color: '#3178C6' }}>TypeScript</span>
+            <span style={{ color: '#FFFFFF' }}>, </span>
             <span style={{ color: '#38BDF8' }}>Tailwind</span>
             <span style={{ color: '#FFFFFF' }}>, </span>
-            <span style={{ color: '#F97316' }}>TanStack Router</span>
-            <span style={{ color: '#FFFFFF' }}>, </span>
-            <span style={{ color: '#3178C6' }}>TypeScript</span>)
+            <span style={{ color: '#F97316' }}>TanStack Router</span>)
           </p>
         </article>
       </section>

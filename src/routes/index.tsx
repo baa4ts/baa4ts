@@ -1,14 +1,21 @@
 import { createFileRoute } from '@tanstack/react-router';
+import type { JSX } from 'react';
+import { TitleCompo } from '../component/index/title';
+import { UserCompo } from '../component/index/user';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
 });
 
 // Vista de la ruta /
-function RouteComponent() {
+function RouteComponent(): JSX.Element {
   return (
-    <>
-      <h1 className='font-bold font-mono text-5xl text-red-300'>HOla</h1>
-    </>
+    <main className="bg-black flex flex-col items-center min-h-screen min-w-screen">
+      {/* Seccion titulo: baa4ts */}
+      <TitleCompo />
+
+      {/* Seccion de img y bio */}
+      <UserCompo /> 
+    </main>
   );
 }

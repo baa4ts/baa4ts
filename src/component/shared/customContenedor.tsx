@@ -7,6 +7,6 @@ interface Props {
 }
 
 export const CustomContenedor = ({ children, className = '', defaultSize = false }: Props): JSX.Element => {
-  const classes = [defaultSize ? 'w-6/6 md:w-5/6' : '', className].filter(Boolean).join(' ');
+  const classes = [defaultSize ? 'w-6/6 md:w-4/6' : '', className].filter(Boolean).join(' ');
   return <section className={classes}>{children}</section>;
 };

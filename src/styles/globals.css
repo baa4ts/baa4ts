@@ -1,1 +1,15 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@theme {
+  /* Fuentes */
+  --font-poppins: 'Poppins', sans-serif;
+
+  /* Colors */
+  --color-white-cream-vanill: #efe6de;
+  --color-pink-punchy-pink: #dd3a44;
+}
+
+
+body, html {
+  overflow-y: visible;
+  overflow-x: hidden;
+}

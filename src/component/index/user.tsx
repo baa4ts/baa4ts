@@ -48,13 +48,13 @@ export const UserCompo = (): JSX.Element => {
           </p>
           <p className="ml-5 mt-5 text-white font-poppins">
             Actualmente estudiando la Tecnicatura en redes y software, y frontend para mejorar mis UI pedorras
-            (<span style={{ color: '#61DAFB' }}>React</span>
+            (<span style={{ color: '#61DAFB' }}><a href='https://es.react.dev/'>React</a></span>
             <span style={{ color: '#FFFFFF' }}>, </span>
-            <span style={{ color: '#3178C6' }}>TypeScript</span>
+            <span style={{ color: '#3178C6' }}><a href='https://www.typescriptlang.org/'></a>TypeScript</span>
             <span style={{ color: '#FFFFFF' }}>, </span>
-            <span style={{ color: '#38BDF8' }}>Tailwind</span>
+            <span style={{ color: '#38BDF8' }}><a href='https://tailwindcss.com/'>Tailwind</a></span>
             <span style={{ color: '#FFFFFF' }}>, </span>
-            <span style={{ color: '#F97316' }}>TanStack Router</span>)
+            <span style={{ color: '#F97316' }}><a href='https://tanstack.com/router/latest'>TanStack Router</a></span>)
           </p>
         </article>
       </section>

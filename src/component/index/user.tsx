@@ -11,13 +11,13 @@ export const UserCompo = (): JSX.Element => {
       gsap.fromTo(
         refUserImg.current,
         { opacity: 0, y: 150 },
-        { duration: 1, opacity: 1, y: 0, stagger: 0.04, ease: 'power2.out' }
+        { duration: 1.5, opacity: 1, y: 0, stagger: 0.04, ease: 'power2.out' }
       );
 
       gsap.fromTo(
         refUserText.current,
         { opacity: 0, y: 150 },
-        { duration: 1, opacity: 1, y: 0, stagger: 0.04, ease: 'power2.out' }
+        { duration: 1.5, opacity: 1, y: 0, stagger: 0.04, ease: 'power2.out' }
       );
     }
   }, []);
@@ -26,7 +26,7 @@ export const UserCompo = (): JSX.Element => {
     <CustomContenedor defaultSize className="mt-5 lg:mt-16 flex flex-col md:flex-row h-auto overflow-hidden">
       <section
         ref={refUserImg}
-        className="basis-1/2 flex flex-col items-center justify-center overflow-hidden md:mt-10 "
+        className="basis-1/2 flex flex-col items-center justify-center overflow-hidden md:mt-10"
       >
         <img
           className="h-60 md:h-50 lg:h-80 max-w-full rounded-lg shadow-md object-cover transition-transform duration-500 ease-in-out hover:scale-95"
@@ -35,13 +35,24 @@ export const UserCompo = (): JSX.Element => {
           loading="lazy"
         />
       </section>
+
       <section ref={refUserText} className="basis-1/2 flex flex-col md:mt-10">
         <div className="flex flex-row">
-          <h2 className="text-white-cream-vanill ml-5 mt-5 text-3xl font-black font-poppins">Sobre mí</h2>
+          <h2 className="text-white-cream-vanill ml-5 mt-5 text-3xl font-black font-poppins border-b-4 border-b-white-cream-vanill">Sobre mí</h2>
         </div>
-        <article className="mt-3.5 md:mt-0">
-          <p className="ml-5 mt-5 text-white">
-            Hola 👋, soy Carlos Morales desarollador backend especializado en django y php
+        <article className="mt-3.5 md:mt-0 mb-10">
+          <p className="ml-5 mt-5 text-white font-poppins">
+            Hola 👋, soy Carlos Morales, desarrollador backend especializado en Django y PHP.
+          </p>
+          <p className="ml-5 mt-5 text-white font-poppins">
+            Actualmente estudiando la Tecnicatura en redes y software, y frontend para mejorar mis UI pedorras
+            (<span style={{ color: '#61DAFB' }}>React</span>
+            <span style={{ color: '#FFFFFF' }}>, </span>
+            <span style={{ color: '#38BDF8' }}>Tailwind</span>
+            <span style={{ color: '#FFFFFF' }}>, </span>
+            <span style={{ color: '#F97316' }}>TanStack Router</span>
+            <span style={{ color: '#FFFFFF' }}>, </span>
+            <span style={{ color: '#3178C6' }}>TypeScript</span>)
           </p>
         </article>
       </section>

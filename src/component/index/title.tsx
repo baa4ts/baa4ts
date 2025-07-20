@@ -13,7 +13,7 @@ export const TitleCompo = (): JSX.Element => {
       const split: SplitText = new SplitText(refTitle.current, { type: 'chars' });
 
       gsap.from(split.chars, {
-        duration: 2,
+        duration: 1.5,
         opacity: 0,
         y: -150,
         stagger: 0.09,

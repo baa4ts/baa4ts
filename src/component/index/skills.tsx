@@ -19,7 +19,13 @@ export const SkillsCompo = (): JSX.Element => {
             </h3>
             <section className="mb-5 flex flex-wrap gap-2">
               {iconResourceSkills.map((iconInfo) => (
-                <SkillCard key={iconInfo.name} filter={iconInfo.filter} src={iconInfo.path} name={iconInfo.name} />
+                <SkillCard
+                  key={iconInfo.name}
+                  filter={iconInfo.filter}
+                  src={iconInfo.path}
+                  name={iconInfo.name}
+                  alt={iconInfo.alt}
+                />
               ))}
             </section>
           </div>
@@ -31,7 +37,7 @@ export const SkillsCompo = (): JSX.Element => {
             </h3>
             <section className="mb-5 flex flex-wrap gap-2">
               {iconResourceStudy.map((iconInfo) => (
-                <SkillCard key={iconInfo.name} src={iconInfo.path} name={iconInfo.name} />
+                <SkillCard key={iconInfo.name} src={iconInfo.path} name={iconInfo.name} alt={iconInfo.alt} />
               ))}
             </section>
           </div>

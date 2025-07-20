@@ -10,7 +10,7 @@ export const TitleCompo = (): JSX.Element => {
     gsap.registerPlugin(SplitText);
 
     if (refTitle.current) {
-      const split = new SplitText(refTitle.current, { type: 'chars' });
+      const split: SplitText = new SplitText(refTitle.current, { type: 'chars' });
 
       gsap.from(split.chars, {
         duration: 2,

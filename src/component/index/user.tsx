@@ -10,25 +10,34 @@ export const UserCompo = (): JSX.Element => {
       gsap.fromTo(
         refUsuario.current,
         { opacity: 0, y: 150 },
-        { duration: 1, opacity: 1, y: 0, ease: 'back.out' }
+        { duration: 1, opacity: 1, y: 0, stagger: 0.04, ease: 'power2.out' }
       );
     }
   }, []);
 
   return (
-    <CustomContenedor defaultSize className="mt-16 flex flex-col md:flex-row h-auto overflow-hidden">
+    <CustomContenedor defaultSize className="mt-5 lg:mt-16 flex flex-col md:flex-row h-auto overflow-hidden">
       <section
         ref={refUsuario}
-        className="basis-1/2 flex flex-col items-center justify-center overflow-hidden"
+        className="basis-1/2 flex flex-col items-center justify-center overflow-hidden md:mt-10 "
       >
         <img
-          className="h-96 max-w-full rounded-lg shadow-md object-cover transition-transform duration-500 ease-in-out hover:scale-95"
-          src="https://rule34storage.b-cdn.net/posts/911/911621/911621.picsmall.jpg"
+          className="h-60 md:h-50 lg:h-80 max-w-full rounded-lg shadow-md object-cover transition-transform duration-500 ease-in-out hover:scale-95"
+          src="https://i.pinimg.com/736x/9e/e1/17/9ee117a4fcdce09aebf3fd0b516f3693.jpg"
           alt="User content"
           loading="lazy"
         />
       </section>
-      <section className="basis-1/2 flex items-center justify-center text-xl font-semibold">2</section>
+      <section className="basis-1/2 flex flex-col md:mt-10">
+        <div className="flex flex-row">
+          <h2 className="text-white-cream-vanill ml-5 mt-5 text-3xl font-black font-poppins">Sobre mí</h2>
+        </div>
+        <article>
+          <p className="ml-5 mt-5 text-white">
+            Hola 👋, soy Carlos Morales desarollador backend especializado en django y php
+          </p>
+        </article>
+      </section>
     </CustomContenedor>
   );
 };

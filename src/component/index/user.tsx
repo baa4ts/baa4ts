@@ -3,12 +3,19 @@ import { CustomContenedor } from '../shared/customContenedor';
 import { gsap } from 'gsap/gsap-core';
 
 export const UserCompo = (): JSX.Element => {
-  const refUsuario = useRef<HTMLDivElement>(null);
+  const refUserImg = useRef<HTMLDivElement>(null);
+  const refUserText = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (refUsuario.current) {
+    if (refUserImg.current && refUserText.current) {
       gsap.fromTo(
-        refUsuario.current,
+        refUserImg.current,
+        { opacity: 0, y: 150 },
+        { duration: 1, opacity: 1, y: 0, stagger: 0.04, ease: 'power2.out' }
+      );
+
+      gsap.fromTo(
+        refUserText.current,
         { opacity: 0, y: 150 },
         { duration: 1, opacity: 1, y: 0, stagger: 0.04, ease: 'power2.out' }
       );
@@ -18,7 +25,7 @@ export const UserCompo = (): JSX.Element => {
   return (
     <CustomContenedor defaultSize className="mt-5 lg:mt-16 flex flex-col md:flex-row h-auto overflow-hidden">
       <section
-        ref={refUsuario}
+        ref={refUserImg}
         className="basis-1/2 flex flex-col items-center justify-center overflow-hidden md:mt-10 "
       >
         <img
@@ -28,11 +35,11 @@ export const UserCompo = (): JSX.Element => {
           loading="lazy"
         />
       </section>
-      <section className="basis-1/2 flex flex-col md:mt-10">
+      <section ref={refUserText} className="basis-1/2 flex flex-col md:mt-10">
         <div className="flex flex-row">
           <h2 className="text-white-cream-vanill ml-5 mt-5 text-3xl font-black font-poppins">Sobre mí</h2>
         </div>
-        <article>
+        <article className="mt-3.5 md:mt-0">
           <p className="ml-5 mt-5 text-white">
             Hola 👋, soy Carlos Morales desarollador backend especializado en django y php
           </p>

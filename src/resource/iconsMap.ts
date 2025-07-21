@@ -39,7 +39,7 @@ export const iconResourceSkills: Icons[] = [
   {
     filter: true,
     name: 'Django',
-    path: '/assets/django.svg',
+    path: 'https://simpleicons.org/icons/django.svg',
     alt: 'Logo de Django, un framework de alto nivel para desarrollo web rápido y seguro en Python, ideal para aplicaciones escalables y robustas.',
   },
   {
@@ -58,9 +58,9 @@ export const iconResourceSkills: Icons[] = [
 
 export const iconResourceStudy: Icons[] = [
   {
-    filter: true,
+    filter: false,
     name: 'Tecnicatura en Redes y Software',
-    path: '/assets/lupa.svg',
+    path: 'https://images.icon-icons.com/621/PNG/512/magnifier-1_icon-icons.com_56924.png',
     alt: 'Icono representando la carrera de Tecnicatura en Redes y Software, centrada en fundamentos de redes, programación y arquitectura de sistemas informáticos.',
   },
   {

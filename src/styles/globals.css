@@ -9,7 +9,9 @@
   --color-pink-punchy-pink: #dd3a44;
 }
 
-body, html {
+body,
+html {
   overflow-y: visible;
   overflow-x: hidden;
+  background-color: black;
 }

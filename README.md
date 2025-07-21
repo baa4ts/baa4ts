@@ -23,7 +23,7 @@ Tengo conocimientos básicos en **HTML**, **CSS** y **JavaScript**.
 
 - HTML  
 - CSS  
-- JavaScript (uso básico en el navegador; no backend ni servidores)
+- JavaScript (uso en el frontend, no backend ni servidores)
 
 #### 🗄️ Base de Datos
 

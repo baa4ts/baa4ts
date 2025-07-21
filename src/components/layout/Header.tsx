@@ -12,32 +12,52 @@ export const Header = () => {
   return (
     <header className="fixed top-0 left-0 z-50 w-full bg-black text-white-cream-vanill font-consolas">
       <nav className="flex h-16 items-center justify-between px-4 md:px-8">
-        <div className="font-consolas text-[20px] font-bold">baa4ts</div>
+        <div className="text-[20px] font-bold">baa4ts</div>
 
         {/* Desktop Menu */}
         <ul className="hidden gap-6 md:flex">
           <li>
-            <Link to="/" className="hover:text-pink-punchy-pink">
+            <Link
+              to="/"
+              className="hover:text-pink-punchy-pink"
+              activeProps={{ className: 'text-pink-punchy-pink underline' }}
+            >
               Home
             </Link>
           </li>
           <li>
-            <Link to="/blog" className="hover:text-pink-punchy-pink">
+            <Link
+              to="/blog"
+              className="hover:text-pink-punchy-pink"
+              activeProps={{ className: 'text-pink-punchy-pink underline' }}
+            >
               Blog
             </Link>
           </li>
           <li>
-            <Link to="/Project" className="hover:text-pink-punchy-pink">
+            <Link
+              to="/project"
+              className="hover:text-pink-punchy-pink"
+              activeProps={{ className: 'text-pink-punchy-pink underline' }}
+            >
               Proyectos
             </Link>
           </li>
           <li>
-            <Link to="/About" className="hover:text-pink-punchy-pink">
+            <Link
+              to="/about"
+              className="hover:text-pink-punchy-pink"
+              activeProps={{ className: 'text-pink-punchy-pink underline' }}
+            >
               Sobre mí
             </Link>
           </li>
           <li>
-            <Link to="/Contact" className="hover:text-pink-punchy-pink">
+            <Link
+              to="/contact"
+              className="hover:text-pink-punchy-pink"
+              activeProps={{ className: 'text-pink-punchy-pink underline' }}
+            >
               Contacto
             </Link>
           </li>
@@ -57,27 +77,52 @@ export const Header = () => {
       >
         <ul className="flex flex-col gap-4 bg-black px-4">
           <li>
-            <Link to="/" onClick={closeMenu} className="block hover:text-pink-punchy-pink">
+            <Link
+              to="/"
+              onClick={closeMenu}
+              className="block hover:text-pink-punchy-pink"
+              activeProps={{ className: 'text-pink-punchy-pink underline' }}
+            >
               Home
             </Link>
           </li>
           <li>
-            <Link to="/blog" onClick={closeMenu} className="block hover:text-pink-punchy-pink">
+            <Link
+              to="/blog"
+              onClick={closeMenu}
+              className="block hover:text-pink-punchy-pink"
+              activeProps={{ className: 'text-pink-punchy-pink underline' }}
+            >
               Blog
             </Link>
           </li>
           <li>
-            <Link to="/Project" onClick={closeMenu} className="block hover:text-pink-punchy-pink">
+            <Link
+              to="/project"
+              onClick={closeMenu}
+              className="block hover:text-pink-punchy-pink"
+              activeProps={{ className: 'text-pink-punchy-pink underline' }}
+            >
               Proyectos
             </Link>
           </li>
           <li>
-            <Link to="/About" onClick={closeMenu} className="block hover:text-pink-punchy-pink">
+            <Link
+              to="/about"
+              onClick={closeMenu}
+              className="block hover:text-pink-punchy-pink"
+              activeProps={{ className: 'text-pink-punchy-pink underline' }}
+            >
               Sobre mí
             </Link>
           </li>
           <li>
-            <Link to="/Contact" onClick={closeMenu} className="block hover:text-pink-punchy-pink">
+            <Link
+              to="/contact"
+              onClick={closeMenu}
+              className="block hover:text-pink-punchy-pink"
+              activeProps={{ className: 'text-pink-punchy-pink underline' }}
+            >
               Contacto
             </Link>
           </li>

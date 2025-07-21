@@ -2,7 +2,6 @@ import { createFileRoute } from '@tanstack/react-router';
 import type { JSX } from 'react';
 import { ContenedorCustom } from '../components/layout/ContenedorCustom';
 import { IconsMap } from '../resource/icons.resource';
-import { icons } from 'lucide-react';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,

@@ -1,13 +1,13 @@
 @import 'tailwindcss';
+
 @theme {
   /* Fuentes */
-  --font-poppins: 'Poppins', sans-serif;
+  --font-consolas: 'Consolas', 'Courier New', monospace;
 
   /* Colors */
   --color-white-cream-vanill: #efe6de;
   --color-pink-punchy-pink: #dd3a44;
 }
-
 
 body, html {
   overflow-y: visible;

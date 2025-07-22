@@ -19,6 +19,7 @@ function RouteComponent(): JSX.Element {
 
       {/* About */}
       <About />
+
     </main>
   );
 }

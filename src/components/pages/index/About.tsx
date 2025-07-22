@@ -9,7 +9,7 @@ export const About = (): JSX.Element => (
             </article>
             <article className="basis-1/2 text-yellow-400 flex flex-col">
                 <div className="md:mt-25 p-2">
-                    <h2 className="text-white dark:text-black text-6xl font-extrabold font-title text-shadow-cyan-50">About  me</h2>
+                    <h2 className="text-white dark:text-black text-6xl font-extrabold font-title">About  me</h2>
                 </div>
                 <div className="p-2 md:pr-20 font-mono">
                     <p className="text-white dark:text-black">Hola, soy carlos morales, un desarollador backend simple, me especializo en crear soluciones simples y limpias, con las tecnologias como php y django con python</p>

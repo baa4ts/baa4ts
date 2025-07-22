@@ -2,8 +2,6 @@ import { useEffect, type FC, useRef } from "react";
 import { Moon, Sun } from "lucide-react";
 import { Tema, useSelectorTema } from "../../hooks/temeSelector";
 import tippy from "tippy.js";
-import 'tippy.js/dist/tippy.css';
-import 'tippy.js/themes/light.css'; // Cambia por otro si quieres (ej. 'material')
 
 export const ButtonCambiarTema: FC = () => {
   const { tema, cambiarTema } = useSelectorTema();
@@ -15,7 +13,7 @@ export const ButtonCambiarTema: FC = () => {
       tippy(ref.current, {
         placement: "left",
         content: "Este botón cambia de tema la web",
-        theme: "light",
+        theme: "dark",
         arrow: true,
         animation: "fade",
       });

@@ -26,7 +26,7 @@ export const Header = () => {
 
 
     return (
-        <Contenedor defaultView className='h-48 flex flex-col items-center justify-center'>
+        <Contenedor defaultView className='h-96 flex flex-col items-center justify-center'>
             <h1 ref={titulo} className="font-title font-black text-7xl md:text-9xl lg:text-[10rem] text-black dark:text-white"></h1>
         </Contenedor>
     )

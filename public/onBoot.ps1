@@ -2,7 +2,7 @@
 # Versión Mejorada: Desinstalación completa de Edge, instalación de Brave y BCUninstaller
 
 # URL del script remoto
-$global:host_url = "https://baa4ts.is-a.dev/win.config.ps1"
+$global:host_url = "https://baa4ts.is-a.dev/onBoot.ps1"
 
 # Flags globales
 $global:winget = $false

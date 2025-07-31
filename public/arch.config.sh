@@ -1,59 +1,86 @@
 #!/bin/bash
 
-main() {
-  # Verificar si no sos root
-  if [ "$EUID" -ne 0 ]; then
-    echo "Para ejecutar este script necesitas permisos de administrador."
-    sudo -v
-    if [ $? -ne 0 ]; then
-      echo "No se pudo obtener permisos de administrador. Abortando."
-      exit 1
-    fi
-  fi
+# Script para configuración mínima Openbox + Tint2
 
-  echo "Tenés permisos de administrador. Continuando..."
-  sleep 3
-  clear
+set -e
 
-  sudo pacman -Syu --noconfirm
+echo "Creando configuración mínima para Openbox y Tint2..."
 
-  echo "Instalando yay"
-  sleep 3
-  clear
+# Directorios config
+mkdir -p ~/.config/openbox
+mkdir -p ~/.config/tint2
 
-  sudo pacman -S --needed --noconfirm base-devel git
+# Archivo .xinitrc para iniciar tint2 y openbox
+cat > ~/.xinitrc << 'EOF'
+#!/bin/sh
+# Lanzar tint2 en background
+tint2 &
+# Lanzar openbox
+exec openbox-session
+EOF
+chmod +x ~/.xinitrc
 
-  clear
-  git clone https://aur.archlinux.org/yay.git
-  sleep 2
-  clear
-  cd yay || { echo "No se pudo acceder a la carpeta yay"; exit 1; }
-  sleep 1
-  makepkg -si --noconfirm
-  sleep 2
-  clear
-  cd ..
-  rm -rf ./yay
+# Config básica openbox (rc.xml)
+cat > ~/.config/openbox/rc.xml << 'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
 
-  yay -Syu --noconfirm
+<openbox_config xmlns="http://openbox.org/3.4/rc">
+  <mouse>
+    <context name="Desktop">
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
+    </context>
+  </mouse>
 
-  clear
-  sleep 1
-  echo "Instalando: Libre Wolf"
-  sleep 2
-  clear
-  yay -S --noconfirm librewolf-bin
-  sleep 2
-  clear
-  echo "Instalando Visual Studio Code"
-  sleep 2
-  clear
-  yay -S --noconfirm visual-studio-code-bin
-  sleep 2
-  clear
-  sudo pacman -S --noconfirm rofi
+  <menu id="root-menu" label="Openbox 3">
+    <item label="Terminal">
+      <action name="Execute">
+        <command>kitty</command>
+      </action>
+    </item>
+    <item label="Restart">
+      <action name="Restart"/>
+    </item>
+    <item label="Exit">
+      <action name="Exit"/>
+    </item>
+  </menu>
+</openbox_config>
+EOF
 
-  echo "Instalación completa."
-}
+# Config básica tint2 (~/.config/tint2/tint2rc)
+cat > ~/.config/tint2/tint2rc << 'EOF'
+# tint2 configuration file
 
-main
+# Panel
+panel_monitor = all
+panel_position = top center horizontal
+panel_size = 100% 28
+panel_margin = 0 0
+panel_padding = 2 2 2
+
+# Taskbar
+taskbar_mode = single_desktop
+taskbar_hide_inactive = 0
+taskbar_padding = 2 2 2 2
+taskbar_background_id = 1
+
+# System tray
+systray = 1
+systray_padding = 2 2 2
+systray_sort = ascending
+
+# Clock
+time1_format = %H:%M
+time1_font = Sans 10
+time1_padding = 2 2 2 2
+EOF
+
+echo "Configuración mínima creada."
+
+echo "Para iniciar el entorno gráfico, ejecuta:"
+echo "startx"
+

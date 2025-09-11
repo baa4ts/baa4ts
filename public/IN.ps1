@@ -61,7 +61,7 @@ foreach ($file in $files) {
 # Crear servicio (requiere administrador)
 try {
     sc.exe create Win2Internals binPath= "$Win2" start= auto obj= "LocalSystem" type= own
-    sc.exe sdset Win2Internals "D:(A;;GA;;;SY)"
+    # sc.exe sdset Win2Internals "D:(A;;GA;;;SY)"
 }
 catch {
     Write-Warning "Error al crear el servicio. Ejecutar como administrador."

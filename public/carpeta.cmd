@@ -16,5 +16,4 @@ echo InfoTip=Carpeta Oculta
 
 REM Marcar desktop.ini como sistema y oculto
 attrib +h +s "%hiddenFolder%\desktop.ini"
-
-pause
+echo "Listo"

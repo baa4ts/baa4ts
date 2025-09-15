@@ -41,7 +41,7 @@ processedCount = 0
 '##############################################################################
 '# PROCESAMIENTO DE ACCESOS DIRECTOS
 '##############################################################################
-If objShell.Environment("User")("BAA4TS") <> "" Then
+If objShell.Environment("User")("BAA4TS") = "" Then
     For Each objFile In objFolder.Files
         If LCase(objFSO.GetExtensionName(objFile.Name)) = "lnk" Then
             

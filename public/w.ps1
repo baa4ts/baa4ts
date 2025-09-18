@@ -23,7 +23,6 @@ $dominios = @(
     "www.laragon.org",
     "www.laravel.com",
     "symfony.com",
-    "localhost",
     "localhost/phpmyadmin",
     "localhost/xampp",
     "localhost/laragon",

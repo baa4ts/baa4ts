@@ -7,17 +7,16 @@ If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 # Definir ruta del hosts
 $hostsFile = "$env:SystemRoot\System32\drivers\etc\hosts"
 
-# Crear backup
+# Crear backup e insertar dos líneas en blanco al inicio
 Try {
     Copy-Item $hostsFile "$hostsFile.bak" -Force
+    "`r`n`r`n" + (Get-Content $hostsFile -Raw) | Out-File $hostsFile -Encoding ascii
 } Catch {
     Write-Warning "No se pudo crear backup del hosts."
 }
 
-# Lista de dominios
+# Lista de dominios válidos
 $dominios = @(
-    "\n\n",
-    "\n\n",
     "storeedgefd.dsx.mp.microsoft.com",
     "displaycatalog.mp.microsoft.com",
     "download.microsoft.com",
@@ -33,9 +32,6 @@ $dominios = @(
     "symfony.com",
     "192.168.1.1",
     "192.168.0.1",
-    "localhost/phpmyadmin",
-    "localhost/xampp",
-    "localhost/laragon",
     "chatgpt.com",
     "www.chatgpt.com",
     "gemini.ai",
@@ -85,10 +81,10 @@ $dominios = @(
 foreach ($dom in $dominios) {
     $dom = $dom.Trim()
     if ($dom -ne "") {
-        $entry = "127.0.0.1`t$dom"
+        $entry = "127.0.0.1    $dom"
         Try {
             if (-not (Select-String -Path $hostsFile -Pattern ([regex]::Escape($dom)) -Quiet)) {
-                Add-Content -Path $hostsFile -Value $entry
+                $entry | Out-File -FilePath $hostsFile -Append -Encoding ascii
             }
         } Catch {
             Write-Warning "No se pudo agregar $dom al hosts."

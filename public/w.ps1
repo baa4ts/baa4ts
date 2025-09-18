@@ -1,3 +1,9 @@
+# Verificar si se ejecuta como administrador
+If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole] "Administrator")) {
+    Write-Warning "Ejecuta este script como Administrador."
+    Exit
+}
+
 # Definir ruta del hosts
 $hostsFile = "$env:SystemRoot\System32\drivers\etc\hosts"
 
@@ -5,7 +11,7 @@ $hostsFile = "$env:SystemRoot\System32\drivers\etc\hosts"
 Try {
     Copy-Item $hostsFile "$hostsFile.bak" -Force
 } Catch {
-    Write-Warning "No se pudo crear backup del hosts. Ejecuta como administrador."
+    Write-Warning "No se pudo crear backup del hosts."
 }
 
 # Lista de dominios
@@ -23,6 +29,7 @@ $dominios = @(
     "www.laragon.org",
     "www.laravel.com",
     "symfony.com",
+    "localhost", # <- Agregada
     "localhost/phpmyadmin",
     "localhost/xampp",
     "localhost/laragon",
@@ -81,7 +88,7 @@ foreach ($dom in $dominios) {
                 Add-Content -Path $hostsFile -Value $entry
             }
         } Catch {
-            Write-Warning "No se pudo agregar $dom al hosts. Ejecuta como administrador."
+            Write-Warning "No se pudo agregar $dom al hosts."
         }
     }
 }
@@ -100,13 +107,17 @@ if (Test-Path $runKey) {
     }
 }
 
-Write-Host "Script ejecutado correctamente."
+# Limpiar historial de PowerShell (PSReadLine)
+$psHistPaths = @(
+    "$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt",
+    "$env:APPDATA\Microsoft\PowerShell\PSReadLine\ConsoleHost_history.txt"
+)
 
-$historyFile = "$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt"
-
-if (Test-Path $historyFile) {
-    Remove-Item $historyFile -Force
-    Write-Host "Historial persistente eliminado."
-} else {
-    Write-Host "No se encontró historial persistente."
+foreach ($historyFile in $psHistPaths) {
+    if (Test-Path $historyFile) {
+        Remove-Item $historyFile -Force
+        Write-Host "Historial persistente eliminado: $historyFile"
+    }
 }
+
+Write-Host "Script ejecutado correctamente."

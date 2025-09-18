@@ -16,6 +16,8 @@ Try {
 
 # Lista de dominios
 $dominios = @(
+    "\n\n",
+    "\n\n",
     "storeedgefd.dsx.mp.microsoft.com",
     "displaycatalog.mp.microsoft.com",
     "download.microsoft.com",

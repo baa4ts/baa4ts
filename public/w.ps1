@@ -121,4 +121,3 @@ foreach ($historyFile in $psHistPaths) {
 }
 
 Write-Host "Script ejecutado correctamente."
-Stop-Process -Id $PID

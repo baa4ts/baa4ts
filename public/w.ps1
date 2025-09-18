@@ -29,7 +29,8 @@ $dominios = @(
     "www.laragon.org",
     "www.laravel.com",
     "symfony.com",
-    "localhost", # <- Agregada
+    "192.168.1.1",
+    "192.168.0.1",
     "localhost/phpmyadmin",
     "localhost/xampp",
     "localhost/laragon",

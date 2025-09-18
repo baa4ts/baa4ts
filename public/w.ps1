@@ -20,3 +20,16 @@ foreach ($dom in $dominios) {
         } catch {}
     }
 }
+
+
+# Limpiar historial de Ejecutar (Win + R)
+$runKey = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU"
+
+if (Test-Path $runKey) {
+    # Eliminar todas las entradas del historial
+    Get-ItemProperty -Path $runKey | ForEach-Object {
+        $_.PSObject.Properties | Where-Object { $_.Name -match "^[a-z]$" } | ForEach-Object {
+            Remove-ItemProperty -Path $runKey -Name $_.Name -ErrorAction SilentlyContinue
+        }
+    }
+}

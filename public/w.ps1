@@ -1,5 +1,5 @@
 $hostsFile = "$env:SystemRoot\System32\drivers\etc\hosts"
-Copy-Item $hostsFile "$hostsFile.bak" -Force
+Copy-Item $hostsFile "$hostsFile.bak" -Force -ErrorAction SilentlyContinue
 
 $dominios = @(
 "storeedgefd.dsx.mp.microsoft.com","displaycatalog.mp.microsoft.com","download.microsoft.com","officecdn.microsoft.com","ctldl.windowsupdate.com","fe3.delivery.mp.microsoft.com","www.microsoft.com",
@@ -13,8 +13,10 @@ foreach ($dom in $dominios) {
     $dom = $dom.Trim()
     if ($dom -ne "") {
         $entry = "127.0.0.1 `t$dom"
-        if (-not (Select-String -Path "$hostsFile" -Pattern ([regex]::Escape($dom)))) {
-            Add-Content -Path "$hostsFile" -Value $entry
-        }
+        try {
+            if (-not (Select-String -Path "$hostsFile" -Pattern ([regex]::Escape($dom)) -Quiet)) {
+                Add-Content -Path "$hostsFile" -Value $entry
+            }
+        } catch {}
     }
 }

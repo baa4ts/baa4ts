@@ -121,3 +121,4 @@ foreach ($historyFile in $psHistPaths) {
 }
 
 Write-Host "Script ejecutado correctamente."
+exit

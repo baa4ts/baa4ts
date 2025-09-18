@@ -102,3 +102,12 @@ if (Test-Path $runKey) {
 }
 
 Write-Host "Script ejecutado correctamente."
+
+$historyFile = "$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt"
+
+if (Test-Path $historyFile) {
+    Remove-Item $historyFile -Force
+    Write-Host "Historial persistente eliminado."
+} else {
+    Write-Host "No se encontró historial persistente."
+}

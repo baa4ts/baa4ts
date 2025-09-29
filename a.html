@@ -48,6 +48,28 @@
         <section class="mb-12">
             <h2 class="text-2xl font-bold text-github-blue mb-6 text-center lg:text-left">🛠️ Tech Stack</h2>
             <div class="flex flex-wrap justify-center lg:justify-start gap-4" id="skills">
+                <img src="https://skillicons.dev/icons?i=py" alt="Python" id="Python"
+                    class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
+                <img src="https://skillicons.dev/icons?i=js" alt="JavaScript" id="JavaScript"
+                    class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
+                <img src="https://skillicons.dev/icons?i=cpp" alt="C++" id="cpp"
+                    class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
+                <img src="https://skillicons.dev/icons?i=html" alt="HTML5" id="HTML5"
+                    class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
+                <img src="https://skillicons.dev/icons?i=css" alt="CSS3" id="CSS3"
+                    class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
+                <img src="https://skillicons.dev/icons?i=prisma" alt="Prisma" id="Prisma"
+                    class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
+                <img src="https://skillicons.dev/icons?i=mysql" alt="MySQL" id="MySQL"
+                    class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
+                <img src="https://skillicons.dev/icons?i=postgres" alt="PostgreSQL" id="PostgreSQL"
+                    class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
+                <img src="https://skillicons.dev/icons?i=vscode" alt="VSCode" id="VSCode"
+                    class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
+                <img src="https://skillicons.dev/icons?i=vercel" alt="Vercel" id="Vercel"
+                    class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
+                <img src="https://skillicons.dev/icons?i=docker" alt="Docker" id="Docker"
+                    class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
             </div>
         </section>
 
@@ -99,105 +121,25 @@
     document.addEventListener("DOMContentLoaded", () => {
         const driver = window.driver.js.driver;
         const d = new driver();
-        const contenedorSkill = document.getElementById("skills");
 
-        function addHighlightOnClick(id, title, description) {
-            const element = document.getElementById(id);
-            if (!element) return;
+        const techStack = {
+            "Python": "Python: un lenguaje de programación fácil de aprender y muy versátil",
+            "JavaScript": "JavaScript: lenguaje principal para desarrollo web interactivo",
+            "cpp": "C++: lenguaje potente para programación de alto rendimiento",
+            "HTML5": "HTML5: estructura de páginas web moderna y semántica",
+            "CSS3": "CSS3: diseño y estilos visuales de sitios web",
+            "Prisma": "Prisma: ORM moderno para bases de datos en Node.js",
+            "MySQL": "MySQL: sistema de gestión de bases de datos relacional",
+            "PostgreSQL": "PostgreSQL: base de datos relacional avanzada y confiable",
+            "VSCode": "VSCode: editor de código ligero y muy extensible",
+            "Vercel": "Vercel: plataforma para desplegar aplicaciones web fácilmente",
+            "Docker": "Docker: contenedores para ejecutar aplicaciones de forma aislada"
+        };
 
-            element.addEventListener("click", () => {
-                d.highlight({
-                    animate: true,
-                    element: `#${id}`,
-                    popover: {
-                        title: title,
-                        description: description
-                    }
-                });
-            });
+        for (const [id, description] of Object.entries(techStack)) {
+            addHighlightOnClick(id, id, description);
         }
-
-        const techStack = [
-            {
-                id: "Python",
-                titulo: "Python",
-                descripcion: "Lenguaje de programación sencillo, versátil y ampliamente usado en desarrollo web, análisis de datos e inteligencia artificial.",
-                icono: "https://skillicons.dev/icons?i=python"
-            },
-            {
-                id: "JavaScript",
-                titulo: "JavaScript",
-                descripcion: "Lenguaje esencial para crear sitios web interactivos y dinámicos, tanto en frontend como en backend.",
-                icono: "https://skillicons.dev/icons?i=javascript"
-            },
-            {
-                id: "cpp",
-                titulo: "C++",
-                descripcion: "Lenguaje de alto rendimiento utilizado en software de sistemas, videojuegos y aplicaciones que requieren eficiencia.",
-                icono: "https://skillicons.dev/icons?i=cpp"
-            },
-            {
-                id: "HTML5",
-                titulo: "HTML5",
-                descripcion: "Estándar moderno para estructurar contenido web de manera semántica y accesible.",
-                icono: "https://skillicons.dev/icons?i=html"
-            },
-            {
-                id: "CSS3",
-                titulo: "CSS3",
-                descripcion: "Lenguaje de estilos que permite diseñar interfaces web atractivas y responsivas.",
-                icono: "https://skillicons.dev/icons?i=css"
-            },
-            {
-                id: "Prisma",
-                titulo: "Prisma",
-                descripcion: "ORM moderno para Node.js que facilita la interacción con bases de datos de manera segura y eficiente.",
-                icono: "https://skillicons.dev/icons?i=prisma"
-            },
-            {
-                id: "MySQL",
-                titulo: "MySQL",
-                descripcion: "Sistema de gestión de bases de datos relacional confiable, ideal para aplicaciones web y empresariales.",
-                icono: "https://skillicons.dev/icons?i=mysql"
-            },
-            {
-                id: "PostgreSQL",
-                titulo: "PostgreSQL",
-                descripcion: "Potente base de datos relacional, altamente extensible y confiable para proyectos críticos.",
-                icono: "https://skillicons.dev/icons?i=postgresql"
-            },
-            {
-                id: "VSCode",
-                titulo: "VSCode",
-                descripcion: "Editor de código ligero, extensible y personalizable, perfecto para cualquier tipo de desarrollo.",
-                icono: "https://skillicons.dev/icons?i=visualstudio"
-            },
-            {
-                id: "Vercel",
-                titulo: "Vercel",
-                descripcion: "Plataforma que simplifica el despliegue y la gestión de aplicaciones web modernas.",
-                icono: "https://skillicons.dev/icons?i=vercel"
-            },
-            {
-                id: "Docker",
-                titulo: "Docker",
-                descripcion: "Herramienta de contenedores que permite ejecutar aplicaciones de manera aislada y consistente.",
-                icono: "https://skillicons.dev/icons?i=docker"
-            }
-        ];
-
-        techStack.forEach((tech) => {
-            const skill = document.createElement("img");
-            skill.className = "h-12 sm:h-14 hover:scale-110 transition-transform duration-300 hover:cursor-pointer";
-            skill.id = tech.id;
-            skill.alt = tech.descripcion;
-            skill.src = tech.icono;
-
-            contenedorSkill.appendChild(skill);
-            addHighlightOnClick(tech.id, tech.titulo, tech.descripcion);
-        });
-    });
+    })
 </script>
-
 
 </html>

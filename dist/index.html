@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>baa4ts</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.js.iife.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.css" />
     <script>
         tailwind.config = {
             theme: {
@@ -20,6 +22,48 @@
         }
     </script>
 </head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const driver = window.driver.js.driver;
+        const d = new driver();
+
+        const techStack = {
+            "Python": "Python: un lenguaje de programación fácil de aprender y muy versátil",
+            "JavaScript": "JavaScript: lenguaje principal para desarrollo web interactivo",
+            "cpp": "C++: lenguaje potente para programación de alto rendimiento",
+            "HTML5": "HTML5: estructura de páginas web moderna y semántica",
+            "CSS3": "CSS3: diseño y estilos visuales de sitios web",
+            "Prisma": "Prisma: ORM moderno para bases de datos en Node.js",
+            "MySQL": "MySQL: sistema de gestión de bases de datos relacional",
+            "PostgreSQL": "PostgreSQL: base de datos relacional avanzada y confiable",
+            "VSCode": "VSCode: editor de código ligero y muy extensible",
+            "Vercel": "Vercel: plataforma para desplegar aplicaciones web fácilmente",
+            "Docker": "Docker: contenedores para ejecutar aplicaciones de forma aislada"
+        };
+
+        function addHighlightOnClick(id, title, description) {
+            const element = document.getElementById(id);
+
+            element.addEventListener("click", () => {
+                d.highlight({
+                    animate: true,
+                    element: `#${id}`,
+                    popover: {
+                        title: title,
+                        description: description
+                    }
+                });
+            });
+        }
+
+
+        for (const [id, description] of Object.entries(techStack)) {
+            addHighlightOnClick(id, id, description);
+        }
+
+    })
+</script>
 
 <body class="bg-github-bg text-github-text font-sans leading-relaxed">
     <div class="max-w-4xl mx-auto px-5 py-16 sm:px-6 lg:px-8">
@@ -45,28 +89,28 @@
 
         <section class="mb-12">
             <h2 class="text-2xl font-bold text-github-blue mb-6 text-center lg:text-left">🛠️ Tech Stack</h2>
-            <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                <img src="https://skillicons.dev/icons?i=py" alt="Python"
+            <div class="flex flex-wrap justify-center lg:justify-start gap-4" id="skills">
+                <img src="https://skillicons.dev/icons?i=py" alt="Python" id="Python"
                     class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
-                <img src="https://skillicons.dev/icons?i=js" alt="JavaScript"
+                <img src="https://skillicons.dev/icons?i=js" alt="JavaScript" id="JavaScript"
                     class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
-                <img src="https://skillicons.dev/icons?i=cpp" alt="C++"
+                <img src="https://skillicons.dev/icons?i=cpp" alt="C++" id="cpp"
                     class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
-                <img src="https://skillicons.dev/icons?i=html" alt="HTML5"
+                <img src="https://skillicons.dev/icons?i=html" alt="HTML5" id="HTML5"
                     class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
-                <img src="https://skillicons.dev/icons?i=css" alt="CSS3"
+                <img src="https://skillicons.dev/icons?i=css" alt="CSS3" id="CSS3"
                     class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
-                <img src="https://skillicons.dev/icons?i=prisma" alt="Prisma"
+                <img src="https://skillicons.dev/icons?i=prisma" alt="Prisma" id="Prisma"
                     class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
-                <img src="https://skillicons.dev/icons?i=mysql" alt="MySQL"
+                <img src="https://skillicons.dev/icons?i=mysql" alt="MySQL" id="MySQL"
                     class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
-                <img src="https://skillicons.dev/icons?i=postgres" alt="PostgreSQL"
+                <img src="https://skillicons.dev/icons?i=postgres" alt="PostgreSQL" id="PostgreSQL"
                     class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
-                <img src="https://skillicons.dev/icons?i=vscode" alt="VSCode"
+                <img src="https://skillicons.dev/icons?i=vscode" alt="VSCode" id="VSCode"
                     class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
-                <img src="https://skillicons.dev/icons?i=vercel" alt="Vercel"
+                <img src="https://skillicons.dev/icons?i=vercel" alt="Vercel" id="Vercel"
                     class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
-                <img src="https://skillicons.dev/icons?i=docker" alt="Docker"
+                <img src="https://skillicons.dev/icons?i=docker" alt="Docker" id="Docker"
                     class="h-12 sm:h-14 hover:scale-110 transition-transform duration-300">
             </div>
         </section>
@@ -115,5 +159,60 @@
 
     </div>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const driver = window.driver.js.driver;
+        const d = new driver();
+
+        const skills = [
+            { id: "Python", src: "https://skillicons.dev/icons?i=py", alt: "Python" },
+            { id: "JavaScript", src: "https://skillicons.dev/icons?i=js", alt: "JavaScript" },
+            { id: "C++", src: "https://skillicons.dev/icons?i=cpp", alt: "C++" },
+            { id: "HTML5", src: "https://skillicons.dev/icons?i=html", alt: "HTML5" },
+            { id: "CSS3", src: "https://skillicons.dev/icons?i=css", alt: "CSS3" },
+            { id: "Prisma", src: "https://skillicons.dev/icons?i=prisma", alt: "Prisma" },
+            { id: "MySQL", src: "https://skillicons.dev/icons?i=mysql", alt: "MySQL" },
+            { id: "PostgreSQL", src: "https://skillicons.dev/icons?i=postgres", alt: "PostgreSQL" },
+            { id: "VSCode", src: "https://skillicons.dev/icons?i=vscode", alt: "VSCode" },
+            { id: "Vercel", src: "https://skillicons.dev/icons?i=vercel", alt: "Vercel" },
+            { id: "Docker", src: "https://skillicons.dev/icons?i=docker", alt: "Docker" }
+        ];
+
+
+        function addHighlightOnClick(id, title, description) {
+            const element = document.getElementById(id);
+
+            element.addEventListener("click", () => {
+                d.highlight({
+                    animate: true,
+                    element: `#${id}`,
+                    popover: {
+                        title: title,
+                        description: description
+                    }
+                });
+            });
+        }
+
+        function renderSkills(containerId, skillsArray) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = "";
+            skillsArray.forEach(skill => {
+                const img = document.createElement("img");
+                img.src = skill.src;
+                img.alt = skill.alt;
+                img.id = skill.id;
+                img.className = "h-12 sm:h-14 hover:scale-110 transition-transform duration-300";
+                container.appendChild(img);
+            });
+        }
+
+        for (const [id, description] of Object.entries(skills)) {
+            addHighlightOnClick(id, id, description);
+        }
+
+        renderSkills("skills", skills);
+    })
+</script>
 
 </html>

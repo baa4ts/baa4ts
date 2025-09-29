@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baa4ts - Portfolio Profesional</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0d1117;
+        color: #c9d1d9;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+
+    a { text-decoration: none; }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 60px 20px 40px 20px; /* espacio superior amplio */
+    }
+
+    /* Header */
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+    .header-text {
+        flex: 1 1 400px;
+        margin-right: 20px;
+    }
+    .header-text h2 {
+        font-size: 2.2rem;
+        color: #58a6ff;
+        margin-bottom: 10px;
+    }
+    .header-text p {
+        font-size: 1.1rem;
+    }
+
+    .profile-image {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #58a6ff;
+    }
+
+    /* Skills */
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: flex-start;
+        margin-bottom: 40px;
+    }
+    .skills img {
+        height: 50px;
+        transition: transform 0.3s ease;
+    }
+    .skills img:hover {
+        transform: scale(1.2);
+    }
+
+    /* Social */
+    .social {
+        display: flex;
+        gap: 15px;
+        justify-content: flex-start;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+    }
+    .social img {
+        height: 40px;
+        transition: transform 0.3s ease;
+    }
+    .social img:hover {
+        transform: scale(1.1);
+    }
+
+    /* Stats */
+    .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+    .stats img {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            align-items: center;
+        }
+        .header-text {
+            margin-right: 0;
+            text-align: center;
+        }
+        .skills, .social {
+            justify-content: center;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header: Titulo + descripción + imagen -->
+    <div class="header">
+        <div class="header-text">
+            <h2>Hi 👋! My name is baa4ts from Uruguay</h2>
+            <p>
+                Carlos (baa4ts). Desarrollador en formación, totalmente centrado en la eficiencia y la productividad.
+                Mi meta actual: Culminar mi tecnicatura en Redes y Software para aplicar el máximo rendimiento a mis proyectos.
+            </p>
+        </div>
+        <img class="profile-image" src="https://i.pinimg.com/736x/3d/1f/2d/3d1f2d8aced96a4f0415b90511e5fb00.jpg"" alt="Perfil de Baa4ts">
+    </div>
+
+    <!-- Skills -->
+    <div class="skills">
+        <img src="https://skillicons.dev/icons?i=py" alt="Python">
+        <img src="https://skillicons.dev/icons?i=js" alt="JavaScript">
+        <img src="https://skillicons.dev/icons?i=cpp" alt="C++">
+        <img src="https://skillicons.dev/icons?i=html" alt="HTML5">
+        <img src="https://skillicons.dev/icons?i=css" alt="CSS3">
+        <img src="https://skillicons.dev/icons?i=prisma" alt="Prisma">
+        <img src="https://skillicons.dev/icons?i=mysql" alt="MySQL">
+        <img src="https://skillicons.dev/icons?i=postgres" alt="PostgreSQL">
+        <img src="https://skillicons.dev/icons?i=vscode" alt="VSCode">
+        <img src="https://skillicons.dev/icons?i=vercel" alt="Vercel">
+        <img src="https://skillicons.dev/icons?i=docker" alt="Docker">
+    </div>
+
+    <!-- Redes Sociales -->
+    <div class="social">
+        <a href="https://discord.com/users/baa4ts" target="_blank">
+            <img src="https://img.shields.io/static/v1?message=Discord&logo=discord&label=&color=7289DA&logoColor=white&labelColor=&style=for-the-badge" alt="Discord">
+        </a>
+        <a href="https://www.linkedin.com/in/carlos-morales-baa4ts/" target="_blank">
+            <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" alt="LinkedIn">
+        </a>
+    </div>
+
+    <!-- Estadísticas de GitHub -->
+    <div class="stats">
+        <img src="https://github-readme-stats.vercel.app/api?username=baa4ts&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=false&count_private=true&disable_animations=false&theme=dracula&locale=es&hide_border=true" alt="GitHub Stats">
+        <img src="https://streak-stats.demolab.com?user=baa4ts&locale=es&mode=weekly&theme=dracula&hide_border=true&border_radius=5" alt="GitHub Streak">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs?username=baa4ts&locale=es&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=tokyonight&hide_border=false" alt="Top Languages">
+    </div>
+
+</div>
+</body>
+</html>

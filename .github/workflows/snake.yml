@@ -1,30 +1,17 @@
-name: Generate Snake Animation
+name: Update GitHub Stats
 
 on:
-  # Ejecuta el workflow cada 6 horas
   schedule:
-    - cron: "0 */6 * * *" 
-  # Permite ejecutarlo manualmente desde la pestaña "Actions"
+    - cron: "0 */12 * * *" # cada 12 horas
   workflow_dispatch:
 
 jobs:
-  build:
+  update-readme:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: Platane/snk@v3
-        id: snake-gif
+      - uses: actions/checkout@v3
+      - uses: endbug/add-and-commit@v9
         with:
-          github_user_name: baa4ts # Tu nombre de usuario de GitHub
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      - uses: crazy-max/ghaction-github-pages@v4
-        with:
-          target_branch: output # La rama donde se guardará el SVG/GIF generado
-          build_dir: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          author_name: "GitHub Actions"
+          author_email: "actions@github.com"
+          message: "Update GitHub stats"

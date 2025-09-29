@@ -1,54 +1,66 @@
-<div align="center">
-  <a href="https://github.com/baa4ts">
-    <img src="https://komarev.com/ghpvc/?username=baa4ts&style=flat-square&color=blue" alt="Perfil de GitHub | Vistas" />
-  </a>
-  <img src="https://img.shields.io/badge/Uruguay-0077B6?style=flat-square&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAADsAAAA7AByqZ5GAAAAABh0RVh0U29mdHdhcmUAd3d3LmFua2Vyc29mdC5jb20AZF5qVwAAAHdJREFUSItjYBgFkwA38/Y/B3qABxUIMu52+g/Xg20w3b6H+8F6MBgFAgD2b//B22B2yL/2vjBdg80/G2SgYBgFo+D5l/c//E4wz0gY4Ea98DcwEwx3YDAAAQyI+B4Y7mYc33g3zQ+2g82A8zQv0sFwFAAAi/8XwKAYBQA469X+tP/83/9j5+8x/v/c8c+M/8/c888/z3y3wOEAIAQOQv/S/d/3f/8//+//5f6s/zX4T9L/5f+T+j/0n/D/T/T3sH3/A//3X/7/8P4wGAUDAKwAw+K+A4I8G4yGg3G/w/+N/6f7F/g/9n/w/kGEAAAUJ/Q+9AAQAAAAA//9i0d/EAAAAABJRU5ErkJggg==" alt="Origen: Uruguay" />
-</div>
-
-# ¡Hola! Soy Carlos (baa4ts) 👋
-### Desarrollador en Formación 🚀
-
-Soy un desarrollador en constante formación originario de **Uruguay**. Mi enfoque está totalmente centrado en la **eficiencia** y la **productividad** para construir soluciones robustas.
-
-> Mi meta actual es culminar mi tecnicatura en **Redes y Software** para aplicar el máximo rendimiento y conocimiento de infraestructura a todos mis proyectos.
+<h1 align="center">👋 Hi, I'm Carlos (baa4ts)</h1>
+<p align="center">Desarrollador en formación desde Uruguay | Apasionado por eficiencia, productividad y software de calidad</p>
 
 ---
-
-## 🛠️ Tecnologías y Herramientas
-Mi *stack* actual incluye tecnologías clave para el desarrollo *backend*, *frontend* y bases de datos:
-
-<div align="left">
-  <img src="https://skillicons.dev/icons?i=py,js,cpp,html,css,prisma,mysql,postgres,vscode,vercel" height="30" alt="Iconos de Python, JavaScript, C++, HTML5, CSS3, Prisma, MySQL, PostgreSQL, VS Code, Vercel" />
-</div>
-
----
-
-## 📈 Estadísticas de GitHub
-Echa un vistazo a mi actividad y lenguajes más utilizados. Mi objetivo es seguir escalando y diversificando mis contribuciones.
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=baa4ts&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=true&theme=dracula&locale=es&hide_border=true&card_width=420" height="180" alt="Gráfico de Estadísticas de GitHub" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=baa4ts&locale=es&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=true" height="180" alt="Gráfico de Lenguajes Más Usados" />
+  <img src="https://i.pinimg.com/736x/3d/1f/2d/3d1f2d8aced96a4f0415b90511e5fb00.jpg" alt="profile" height="150"/>
 </div>
 
 ---
 
-## 🔗 Conéctate Conmigo
-Siempre abierto a colaborar en nuevos proyectos y compartir conocimiento. ¡No dudes en contactarme!
+### 🧰 Tecnologías & Herramientas
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=py" height="30" alt="Python" />
+  <img src="https://skillicons.dev/icons?i=js" height="30" alt="JavaScript" />
+  <img src="https://skillicons.dev/icons?i=cpp" height="30" alt="C++" />
+  <img src="https://skillicons.dev/icons?i=html" height="30" alt="HTML5" />
+  <img src="https://skillicons.dev/icons?i=css" height="30" alt="CSS3" />
+  <img src="https://skillicons.dev/icons?i=prisma" height="30" alt="Prisma" />
+  <img src="https://skillicons.dev/icons?i=mysql" height="30" alt="MySQL" />
+  <img src="https://skillicons.dev/icons?i=postgres" height="30" alt="PostgreSQL" />
+  <img src="https://skillicons.dev/icons?i=vscode" height="30" alt="VSCode" />
+  <img src="https://skillicons.dev/icons?i=vercel" height="30" alt="Vercel" />
+</div>
 
-<div align="left">
-  <a href="https://www.linkedin.com/in/carlos-morales-baa4ts/" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="Enlace a LinkedIn" />
-  </a>
+---
+
+### 🌐 Conectemos
+<div align="center">
   <a href="https://discord.com/users/baa4ts" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Discord&logo=discord&label=&color=7289DA&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="Enlace a Discord" />
+    <img src="https://img.shields.io/static/v1?message=Discord&logo=discord&color=7289DA&style=for-the-badge" height="35" alt="Discord" />
+  </a>
+  <a href="https://www.linkedin.com/in/carlos-morales-baa4ts/" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&color=0077B5&style=for-the-badge" height="35" alt="LinkedIn" />
+  </a>
+  <a href="https://github.com/baa4ts" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=GitHub&logo=github&color=181717&style=for-the-badge" height="35" alt="GitHub" />
   </a>
 </div>
 
 ---
 
-## 🐍 Actividad Reciente
+### 📊 GitHub Stats
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=baa4ts&show_icons=true&theme=dracula&include_all_commits=true" height="150" alt="GitHub stats" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=baa4ts&layout=compact&theme=dracula&langs_count=5" height="150" alt="Top Languages" />
+</div>
+
+---
+
+### 🐍 Animación Snake
+<div align="center">
+  <img src="https://raw.githubusercontent.com/baa4ts/baa4ts/output/snake.svg" alt="Snake animation" />
+</div>
+
+---
+
+### ⚡ Workflows & Automatización
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/baa4ts/baa4ts/output/github-contribution-grid-snake.svg" alt="Animación de contribuciones de GitHub" />
+
+![Workflow Status](https://github.com/baa4ts/baa4ts/actions/workflows/main.yml/badge.svg)
+![Update README](https://github.com/baa4ts/baa4ts/actions/workflows/update-readme.yml/badge.svg)
+![Deploy Status](https://img.shields.io/vercel/deploy/status/baa4ts/portfolio?style=for-the-badge)
+
 </div>

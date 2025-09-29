@@ -8,35 +8,39 @@
 
 ###
 
-<img align="left" height="150" src="https://i.pinimg.com/736x/3d/1f/2d/3d1f2d8aced96a4f0415b90511e5fb00.jpg"  />
+<br clear="both">
+
+<img align="left" height="150" style="margin-right:35px;" src="https://i.pinimg.com/736x/3d/1f/2d/3d1f2d8aced96a4f0415b90511e5fb00.jpg" />
 
 ###
 
 <div align="left">
-  <img src="https://skillicons.dev/icons?i=py" height="40" alt="python logo"  />
+  <img src="https://skillicons.dev/icons?i=py" height="45" alt="python logo"  />
   <img width="15" />
-  <img src="https://skillicons.dev/icons?i=js" height="40" alt="javascript logo"  />
+  <img src="https://skillicons.dev/icons?i=js" height="45" alt="javascript logo"  />
   <img width="15" />
-  <img src="https://skillicons.dev/icons?i=cpp" height="40" alt="cplusplus logo"  />
+  <img src="https://skillicons.dev/icons?i=cpp" height="45" alt="cplusplus logo"  />
   <img width="15" />
-  <img src="https://skillicons.dev/icons?i=html" height="40" alt="html5 logo"  />
+  <img src="https://skillicons.dev/icons?i=html" height="45" alt="html5 logo"  />
   <img width="15" />
-  <img src="https://skillicons.dev/icons?i=css" height="40" alt="css logo"  />
+  <img src="https://skillicons.dev/icons?i=css" height="45" alt="css logo"  />
   <img width="15" />
-  <img src="https://skillicons.dev/icons?i=prisma" height="40" alt="prisma logo"  />
+  <img src="https://skillicons.dev/icons?i=prisma" height="45" alt="prisma logo"  />
   <img width="15" />
-  <img src="https://skillicons.dev/icons?i=mysql" height="40" alt="mysql logo"  />
+  <img src="https://skillicons.dev/icons?i=mysql" height="45" alt="mysql logo"  />
   <img width="15" />
-  <img src="https://skillicons.dev/icons?i=postgres" height="40" alt="postgresql logo"  />
+  <img src="https://skillicons.dev/icons?i=postgres" height="45" alt="postgresql logo"  />
   <img width="15" />
-  <img src="https://skillicons.dev/icons?i=vscode" height="40" alt="vscode logo"  />
+  <img src="https://skillicons.dev/icons?i=vscode" height="45" alt="vscode logo"  />
   <img width="15" />
-  <img src="https://skillicons.dev/icons?i=vercel" height="40" alt="vercel logo"  />
+  <img src="https://skillicons.dev/icons?i=vercel" height="45" alt="vercel logo"  />
   <img width="15" />
-  <img src="https://skillicons.dev/icons?i=docker" height="40" alt="docker logo"  />
+  <img src="https://skillicons.dev/icons?i=docker" height="45" alt="docker logo"  />
 </div>
 
 ###
+
+<br clear="both">
 
 <div align="center">
   <a href="baa4ts" target="_blank">
@@ -60,5 +64,6 @@
 ###
 
 <br clear="both">
+
 
 ###

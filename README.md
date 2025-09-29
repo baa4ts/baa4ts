@@ -10,7 +10,8 @@
 
 <br clear="both">
 
-<img align="left" height="150" style="margin-right:35px; margin-bottom:20px;" src="https://i.pinimg.com/736x/3d/1f/2d/3d1f2d8aced96a4f0415b90511e5fb00.jpg" />
+<img align="left" height="250"     style="float: right; margin-right: 35px; margin-bottom: 20px; border-radius: 15px;" 
+src="https://i.pinimg.com/736x/3d/1f/2d/3d1f2d8aced96a4f0415b90511e5fb00.jpg" />
 
 
 ###
@@ -41,7 +42,6 @@
 
 ###
 
-<br clear="both">
 
 <div align="center">
   <a href="baa4ts" target="_blank">
@@ -65,4 +65,3 @@
 ###
 
 <br clear="both">
-###

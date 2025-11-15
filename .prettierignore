@@ -1,0 +1,11 @@
+node_modules
+dist
+build
+.next
+*.cjs
+*.mjs
+todos.json
+**/*pnpm-workspace.yaml
+**/.vscode
+src/router.tsx
+src/routeTree.gen.ts

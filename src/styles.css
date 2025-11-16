@@ -1,25 +1,15 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'BreezeSansThin';
+  font-family: 'SamsungSans';
   font-style: normal;
   font-weight: 200;
   font-display: swap;
-  src: url('/fonts/BreezeSans-Thin_20150728.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'BreezeSansBold';
-  font-style: normal;
-  font-weight: 700;
-  /* Bold */
-  font-display: swap;
-  src: url('/fonts/BreezeSans-Bold_20150728.ttf') format('truetype');
+  src: url('/fonts/SamsungSans-Regular.woff') format('woff2');
 }
 
 @theme {
-  --font-bre-thin: "BreezeSansThin", sans-serif;
-  --font-bre-bold: "BreezeSansBold", sans-serif;
+  --font-Samsung: "SamsungSans-Regular", sans-serif;
 }
 
 body {

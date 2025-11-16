@@ -41,9 +41,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="w-full h-full flex flex-col items-center">
         {children}
-        <TanStackDevtools config={{ position: 'bottom-right', }}
+        <TanStackDevtools
+          config={{ position: 'bottom-right' }}
           plugins={[
             {
               name: 'Tanstack Router',

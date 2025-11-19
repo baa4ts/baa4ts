@@ -6,7 +6,7 @@ const Hero = () => {
       {/* Imagen de perfil */}
       <article className="md:w-2/5 h-64 md:h-72">
         <img
-          className="md:rounded-l-xl w-full h-full object-cover"
+          className="w-full h-full object-cover"
           src="https://i.pinimg.com/736x/14/20/fd/1420fdb2c1b84a55bc9a61e3050b0fa5.jpg"
           alt="baa4ts, desarrollador backend"
           loading="eager"
@@ -17,10 +17,9 @@ const Hero = () => {
       <article
         className="md:w-3/5 flex flex-col justify-center 
         bg-[#060913]
-        md:rounded-r-2xl
         shadow-lg p-6 md:p-4 md:h-72"
       >
-        <h1 className="text-3xl md:text-5xl font-Samsung font-extrabold">baa4ts</h1>
+        <h1 className="text-3xl font-Samsung font-extrabold">baa4ts</h1>
         <p className="text-slate-300 md:text-slate-200 mt-3 leading-relaxed font-mono">
           Soy Carlos (baa4ts), un estudiante de tecnicatura en Redes y Software, especializado en desarrollo backend. Estoy aprendiendo React poco a poco,
           disfrutando del proceso y creando proyectos que combinan logica, curiosidad y practica constante.

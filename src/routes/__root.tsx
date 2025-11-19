@@ -41,7 +41,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="w-full h-full flex flex-col items-center bg-[#060913]">
+      <body className="bg-[#060913] bg-[url('/bg.svg')] bg-fill bg-center bg-no-repeat bg-fixed">
         {children}
         <TanStackDevtools
           config={{ position: 'bottom-right' }}

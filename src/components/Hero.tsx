@@ -1,9 +1,34 @@
+import { Goal } from 'lucide-react';
+
 const Hero = () => {
   return (
-    <section className="w-full h-72 bg-no-repeat flex items-center justify-center">
-      <div>
-        <span className="text-white font-Roboto text-7xl">baa4ts</span>
-      </div>
+    <section className="w-full md:w-4/5 lg:w-3/5 mt-10 md:mt-24 gap-2 text-white flex flex-col md:flex-row justify-center items-stretch p-5 md:p-0">
+      {/* Imagen de perfil */}
+      <article className="md:w-2/5 h-64 md:h-72">
+        <img
+          className="md:rounded-l-xl w-full h-full object-cover"
+          src="https://i.pinimg.com/736x/14/20/fd/1420fdb2c1b84a55bc9a61e3050b0fa5.jpg"
+          alt="baa4ts, desarrollador backend"
+          loading="eager"
+        />
+      </article>
+
+      {/* Card bio */}
+      <article
+        className="md:w-3/5 flex flex-col justify-center 
+        bg-[#060913]
+        md:rounded-r-2xl
+        shadow-lg p-6 md:p-4 md:h-72"
+      >
+        <h1 className="text-3xl md:text-5xl font-Samsung font-extrabold">baa4ts</h1>
+        <p className="text-slate-300 md:text-slate-200 mt-3 leading-relaxed font-mono">
+          Soy Carlos (baa4ts), un estudiante de tecnicatura en Redes y Software, especializado en desarrollo backend. Estoy aprendiendo React poco a poco,
+          disfrutando del proceso y creando proyectos que combinan logica, curiosidad y practica constante.
+        </p>
+        <button className="flex flex-row gap-2 cursor-pointer md:hover:scale-102 md:transition-transform mt-5 items-center justify-center font-mono bg-blue-600 text-white w-full md:w-44 rounded h-10 md:h-8 hover:bg-blue-600/70 transition-colors">
+          Looking for job <Goal color="white" size={20} />
+        </button>
+      </article>
     </section>
   );
 };

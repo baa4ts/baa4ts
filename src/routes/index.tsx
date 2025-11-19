@@ -6,7 +6,7 @@ export const Route = createFileRoute('/')({ component: App });
 
 function App() {
   return (
-    <main className="w-full">
+    <main className="w-full flex flex-col items-center">
       <Hero />
     </main>
   );

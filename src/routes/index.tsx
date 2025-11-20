@@ -1,4 +1,5 @@
 import Hero from '@/components/Hero';
+import Skills from '@/components/Skills';
 
 import { createFileRoute } from '@tanstack/react-router';
 
@@ -8,6 +9,7 @@ function App() {
   return (
     <main className="w-full flex flex-col items-center">
       <Hero />
+      <Skills />
     </main>
   );
 }

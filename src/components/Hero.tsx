@@ -1,4 +1,4 @@
-import { Goal } from 'lucide-react';
+import { Github, Goal } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -24,9 +24,18 @@ const Hero = () => {
           Soy Carlos (baa4ts), un estudiante de tecnicatura en Redes y Software, especializado en desarrollo backend. Estoy aprendiendo React poco a poco,
           disfrutando del proceso y creando proyectos que combinan logica, curiosidad y practica constante.
         </p>
-        <button className="flex flex-row gap-2 cursor-pointer md:hover:scale-102 md:transition-transform mt-5 items-center justify-center font-mono bg-blue-600 text-white w-full md:w-44 rounded h-10 md:h-8 hover:bg-blue-600/70 transition-colors">
-          Looking for job <Goal color="white" size={20} />
-        </button>
+        <div className="flex flex-col md:gap justify-center gap-2 md:flex-row mt-5">
+          <button className="flex flex-row gap-2 cursor-pointer md:hover:scale-102 md:transition-transform  items-center justify-center font-mono bg-blue-600 text-white w-full md:w-44 rounded h-10 md:h-8 hover:bg-blue-600/70 transition-colors">
+            Looking for job <Goal color="white" size={20} />
+          </button>
+
+          <a
+            href="https://github.com/baa4ts"
+            className="flex flex-row gap-2 cursor-pointer md:hover:scale-102 md:transition-transform  items-center justify-center font-mono bg-blue-600 text-white w-full md:w-44 rounded h-10 md:h-8 hover:bg-blue-600/70 transition-colors"
+          >
+            Github <Github color="white" size={20} />
+          </a>
+        </div>
       </article>
     </section>
   );

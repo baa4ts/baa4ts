@@ -3,8 +3,7 @@ Soy Carlos (baa4ts), un estudiante de tecnicatura en Redes y Software, especiali
 
 
 # 💻 Tech Stack:
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge\&logo=react\&logoColor=%2361DAFB)![TanStack](https://img.shields.io/badge/tanstack-%23FF4154.svg?style=for-the-badge\&logo=reactquery\&logoColor=white)![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge\&logo=typescript\&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge\&logo=javascript\&logoColor=%23F7DF1E)![Express](https://img.shields.io/badge/express-%23000000.svg?style=for-the-badge\&logo=express\&logoColor=white)![Prisma](https://img.shields.io/badge/prisma-%23004E45.svg?style=for-the-badge\&logo=prisma\&logoColor=white)![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge\&logo=vercel\&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge\&logo=react\&logoColor=%2361DAFB)![TanStack](https://img.shields.io/badge/tanstack-%23FF4154.svg?style=for-the-badge\&logo=reactquery\&logoColor=white)![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge\&logo=typescript\&logoColor=white)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge\&logo=javascript\&logoColor=%23F7DF1E)![Express](https://img.shields.io/badge/express-%23000000.svg?style=for-the-badge\&logo=express\&logoColor=white)![Prisma](https://img.shields.io/badge/prisma-%23004E45.svg?style=for-the-badge\&logo=prisma\&logoColor=white)![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge\&logo=vercel\&logoColor=white)
 # 📊 GitHub Stats:
 ![](https://github-readme-stats.vercel.app/api?username=baa4ts&theme=dark&hide_border=false&include_all_commits=true&count_private=true)<br/>
 ![](https://nirzak-streak-stats.vercel.app/?user=baa4ts&theme=dark&hide_border=false)<br/>

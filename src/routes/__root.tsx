@@ -28,51 +28,51 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
           title: 'baa4ts',
         },
         {
-          name: "description",
-          content: "baa4ts desarrollador backend, tecnologias modernas, soluciones escalables con React, TypeScript, JavaScript y Express.js.",
+          name: 'description',
+          content: 'baa4ts desarrollador backend, tecnologias modernas, soluciones escalables con React, TypeScript, JavaScript y Express.js.',
         },
         {
-          property: "og:title",
-          content: "baa4ts",
+          property: 'og:title',
+          content: 'baa4ts',
         },
         {
-          property: "og:description",
-          content: "baa4ts desarrollador backend, tecnologias modernas, soluciones escalables con React, TypeScript, JavaScript y Express.js.",
+          property: 'og:description',
+          content: 'baa4ts desarrollador backend, tecnologias modernas, soluciones escalables con React, TypeScript, JavaScript y Express.js.',
         },
         {
-          property: "og:type",
-          content: "website",
+          property: 'og:type',
+          content: 'website',
         },
         {
-          property: "og:image",
-          content: "https://i.pinimg.com/1200x/44/c4/83/44c4837d944315f8f4bcb7f9e65e63ad.jpg",
+          property: 'og:image',
+          content: 'https://i.pinimg.com/1200x/44/c4/83/44c4837d944315f8f4bcb7f9e65e63ad.jpg',
         },
         {
-          property: "og:site_name",
-          content: "baa4ts",
+          property: 'og:site_name',
+          content: 'baa4ts',
         },
         {
-          property: "og:url",
+          property: 'og:url',
           content: currentUrl,
         },
         {
-          name: "twitter:title",
-          content: "baa4ts",
+          name: 'twitter:title',
+          content: 'baa4ts',
         },
         {
-          name: "twitter:description",
-          content: "baa4ts desarrollador backend, tecnologias modernas, soluciones escalables con React, TypeScript, JavaScript y Express.js.",
+          name: 'twitter:description',
+          content: 'baa4ts desarrollador backend, tecnologias modernas, soluciones escalables con React, TypeScript, JavaScript y Express.js.',
         },
         {
-          name: "twitter:image",
-          content: "https://i.pinimg.com/1200x/44/c4/83/44c4837d944315f8f4bcb7f9e65e63ad.jpg",
+          name: 'twitter:image',
+          content: 'https://i.pinimg.com/1200x/44/c4/83/44c4837d944315f8f4bcb7f9e65e63ad.jpg',
         },
         {
-          name: "twitter:url",
+          name: 'twitter:url',
           content: currentUrl,
         },
         {
-          property: "og:url",
+          property: 'og:url',
           content: currentUrl,
         },
       ],
@@ -87,8 +87,6 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
   notFoundComponent: () => <div>Pagina no encontrada 😢</div>,
   shellComponent: RootDocument,
 });
-
-
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (

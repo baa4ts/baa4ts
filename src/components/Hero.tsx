@@ -9,7 +9,7 @@ const Hero = () => {
           className="w-full h-full object-cover"
           src="https://i.pinimg.com/1200x/44/c4/83/44c4837d944315f8f4bcb7f9e65e63ad.jpg"
           alt="baa4ts, desarrollador backend"
-          loading="eager"
+          loading="lazy"
         />
       </article>
 

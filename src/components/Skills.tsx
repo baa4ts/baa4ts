@@ -1,5 +1,6 @@
 import { CustomIcons } from './Skills/CustomIcons';
 import { Expressjs, JavaScript, Prisma, ReactLogo, TanStack, TypeScript, Vercel } from './svg';
+import { ReactRouter } from './svg/ReactRouter';
 
 const Skills = () => {
   return (
@@ -11,6 +12,7 @@ const Skills = () => {
 
         <section className="flex flex-wrap gap-5 px-5 pb-5 justify-center md:justify-start">
           <CustomIcons svg={<ReactLogo className="w-8 md:w-12 h-8 md:h-12" />} texto="React" />
+          <CustomIcons svg={<ReactRouter className="w-8 md:w-12 h-8 md:h-12" />} texto="React Router" />
           <CustomIcons svg={<TanStack className="w-8 md:w-12 h-8 md:h-12" />} texto="TanStack" />
           <CustomIcons svg={<TypeScript className="w-8 md:w-12 h-8 md:h-12" />} texto="TypeScript" />
           <CustomIcons svg={<JavaScript className="w-8 md:w-12 h-8 md:h-12" />} texto="JavaScript" />

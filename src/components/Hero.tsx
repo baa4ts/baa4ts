@@ -21,8 +21,8 @@ const Hero = () => {
       >
         <h1 className="text-3xl font-Samsung font-extrabold">baa4ts</h1>
         <p className="text-slate-300 md:text-slate-200 mt-3 leading-relaxed font-mono">
-          Soy Carlos (baa4ts), un estudiante de tecnicatura en Redes y Software, especializado en desarrollo backend. Estoy aprendiendo React poco a poco,
-          disfrutando del proceso y creando proyectos que combinan logica, curiosidad y practica constante.
+          Soy Carlos (baa4ts), estudiante de tecnicatura en Redes y Software, especializado en desarrollo backend. Actualmente estoy aprendiendo React junto a
+          TanStack, disfrutando del proceso y creando proyectos que combinan logica, curiosidad y practica constante.
         </p>
         <div className="flex flex-col md:gap justify-center gap-2 md:flex-row mt-5">
           <button className="flex flex-row gap-2 cursor-pointer md:hover:scale-102 md:transition-transform  items-center justify-center font-mono bg-blue-600 text-white w-full md:w-44 rounded h-10 md:h-8 hover:bg-blue-600/70 transition-colors">

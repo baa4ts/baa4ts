@@ -15,7 +15,7 @@ export function CustomIcons({ svg, texto }: CustomIconsProps) {
       <div className="w-12 h-12 flex items-center justify-center">{svg}</div>
 
       {show && (
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 font-Samsung font-thin mb-3 px-3 py-2 bg-black text-white text-sm rounded-lg shadow-lg whitespace-nowrap z-10 min-w-[110px] text-center">
+        <div className="absolute bottom-full left-1/2 -translate-x-1/2 font-Samsung font-thin mb-3 px-3 py-2 bg-white text-black text-sm rounded-lg shadow-lg whitespace-nowrap z-10 min-w-[110px] text-center">
           {texto}
         </div>
       )}

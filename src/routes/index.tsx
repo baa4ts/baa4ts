@@ -1,9 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Hero } from '../components/portfolio/Hero'
+import { Skills } from '../components/portfolio/Skills'
 
 export const Route = createFileRoute('/')({
-  component: RouteComponent,
+    component: RouteComponent,
 })
 
 function RouteComponent() {
-  return <div>Hello "/"!</div>
+    return (
+        <>
+            <Hero />
+            <Skills />
+        </>
+    )
 }

@@ -12,7 +12,6 @@ function RouteComponent() {
         <>
             <Hero />
             <Skills />
-            <Proyectos />
         </>
     )
 }

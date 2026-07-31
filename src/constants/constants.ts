@@ -40,7 +40,7 @@ export const constants = {
       ],
       npm: 'https://www.npmjs.com/package/crypto-edge',
       github: 'https://github.com/baa4ts/crypto-edge',
-      test: 'https://github.com/baa4ts/compress-edge/actions/runs/30383475532',
+      test: 'https://github.com/baa4ts/crypto-edge/actions/runs/30565721166',
     },
     {
       name: 'compress-edge',

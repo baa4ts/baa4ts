@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+@utility seccion {
+  @apply rounded-lg border border-white/10 bg-white/5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+/* Mobile */
+body {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+}

@@ -4,6 +4,10 @@
   @apply rounded-lg border border-white/10 bg-white/5;
 }
 
+@utility hover-anim {
+  @apply transition-transform duration-100 ease-in-out hover:scale-90 hover:animate-pulse hover:cursor-pointer;
+}
+
 * {
   box-sizing: border-box;
 }

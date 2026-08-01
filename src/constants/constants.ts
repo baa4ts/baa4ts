@@ -57,4 +57,15 @@ export const constants = {
       test: 'https://github.com/baa4ts/compress-edge/actions/runs/30383475532',
     },
   ],
+  CV: {
+    metadata: {
+      title: 'Carlos Morales - CV',
+      author: 'Carlos Morales',
+      subject: 'Curriculum Vitae',
+      keywords: 'redes, software, uruguay, cv',
+      creator: 'baa4ts.is-a.dev',
+      producer: '@react-pdf/renderer',
+      language: 'es',
+    },
+  },
 } as const

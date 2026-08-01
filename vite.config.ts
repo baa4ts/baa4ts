@@ -18,6 +18,9 @@ const config = defineConfig({
     viteReact(),
     babel({ presets: [reactCompilerPreset()] }),
   ],
+  ssr: {
+    external: ['@react-pdf/renderer'],
+  },
 })
 
 export default config

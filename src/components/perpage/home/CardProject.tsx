@@ -1,3 +1,4 @@
+import { VerticalSeparator } from '#/components/shared/VerticalSeparator'
 import { Link } from '@tanstack/react-router'
 import React from 'react'
 
@@ -37,7 +38,6 @@ export const CardProject = React.memo(
         </div>
 
         <p className="text-white/70 text-sm leading-relaxed">{desc}</p>
-
         {tech && tech.length > 0 && (
           <div className="flex flex-row flex-wrap gap-1.5">
             {tech.map((t) => (
@@ -51,52 +51,56 @@ export const CardProject = React.memo(
           </div>
         )}
 
-        <div className="flex flex-row gap-2 mt-1">
-          {web && (
-            <a
-              href={web}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-sm text-white/90 border border-white/15 rounded-md px-3 py-1 hover:bg-white/10 hover:border-white/30 transition-colors"
-            >
-              Visitar
-            </a>
-          )}
-          {project && (
-            <Link
-              to="/project/$id"
-              params={{ id: project }}
-              className="font-mono text-sm text-white/90 border border-white/15 rounded-md px-3 py-1 hover:bg-white/10 hover:border-white/30 transition-colors"
-            >
-              Ver proyecto
-            </Link>
-          )}
+        <div className="flex flex-row gap-3 mt-1 items-center">
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-xs text-white/50 hover:text-white/80 transition-colors"
+          >
+            github
+          </a>
+          {npm && <VerticalSeparator />}
           {npm && (
             <a
               href={npm}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-sm text-white/90 border border-white/15 rounded-md px-3 py-1 hover:bg-white/10 hover:border-white/30 transition-colors"
+              className="font-mono text-xs text-red-400 hover:text-red-300 transition-colors"
             >
-              Ir a npm
+              npm
             </a>
           )}
-          <a
-            href={github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-sm text-white/70 border border-white/15 rounded-md px-3 py-1 hover:bg-white/10 hover:border-white/30 transition-colors"
-          >
-            Github
-          </a>
+          {web && <VerticalSeparator />}
+          {web && (
+            <a
+              href={web}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              visitar
+            </a>
+          )}
+          {project && <VerticalSeparator />}
+          {project && (
+            <Link
+              to="/project/$id"
+              params={{ id: project }}
+              className="font-mono text-xs text-purple-400 hover:text-purple-300 transition-colors"
+            >
+              ver proyecto
+            </Link>
+          )}
+          {test && <VerticalSeparator />}
           {test && (
             <a
               href={test}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-sm text-white/90 border border-white/15 rounded-md px-3 py-1 hover:bg-white/10 hover:border-white/30 transition-colors"
+              className="font-mono text-xs text-yellow-400 hover:text-yellow-300 transition-colors"
             >
-              Ver últimos tests
+              ver tests
             </a>
           )}
         </div>

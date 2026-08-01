@@ -76,14 +76,43 @@ function Home() {
         </div>
 
         <div className="flex flex-row flex-wrap gap-2">
-          <CustomIcon color="#F59E0B" icono={TypeScript} animate />
-          <CustomIcon color="#F59E0B" icono={JavaScript} />
-          <CustomIcon color="#3B82F6" icono={Expressjs} />
-          <CustomIcon color="#A855F7" icono={Reactjs} />
-          <CustomIcon color="#A855F7" icono={TanStack} />
-          <CustomIcon color="#A855F7" icono={TailwindCSS} />
-          <CustomIcon color="#EF4444" icono={Docker} />
-          <CustomIcon color="#06B6D4" icono={MySQL} />
+          <CustomIcon
+            color="#F59E0B"
+            icono={TypeScript}
+            tipText="TypeScript"
+            animate
+          />
+          <CustomIcon color="#F59E0B" icono={JavaScript} tipText="JavaScript" />
+          <CustomIcon
+            color="#3B82F6"
+            icono={Expressjs}
+            tipText="Express.js — Framework backend para Node.js"
+          />
+          <CustomIcon
+            color="#A855F7"
+            icono={Reactjs}
+            tipText="React — Libreria UI de JavaScript"
+          />
+          <CustomIcon
+            color="#A855F7"
+            icono={TanStack}
+            tipText="TanStack — Routing, Query y Table para React"
+          />
+          <CustomIcon
+            color="#A855F7"
+            icono={TailwindCSS}
+            tipText="Tailwind CSS — Framework de estilos utility-first"
+          />
+          <CustomIcon
+            color="#EF4444"
+            icono={Docker}
+            tipText="Docker — Contenedores para deploy y desarrollo"
+          />
+          <CustomIcon
+            color="#06B6D4"
+            icono={MySQL}
+            tipText="MySQL — Base de datos relacional"
+          />
         </div>
       </article>
 

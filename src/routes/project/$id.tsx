@@ -5,5 +5,10 @@ export const Route = createFileRoute('/project/$id')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/project/$id"!</div>
+  const { id } = Route.useParams()
+  return (
+    <div>
+      <h1>{id}</h1>
+    </div>
+  )
 }

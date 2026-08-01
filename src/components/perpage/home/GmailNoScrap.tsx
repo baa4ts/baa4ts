@@ -1,4 +1,7 @@
+'use client'
+
 import { Gmail } from '#/components/constants/Gmail'
+import { motion } from 'motion/react'
 import React from 'react'
 
 export const GmailNoScrap = React.memo(() => {
@@ -13,7 +16,9 @@ export const GmailNoScrap = React.memo(() => {
   }
 
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
       onClick={copy}
       className="font-mono text-xs text-white/90 border border-white/15 rounded-md px-2.5 py-1.5 hover:bg-white/10 hover:border-white/30 transition-colors flex items-center gap-1.5"
     >
@@ -21,6 +26,6 @@ export const GmailNoScrap = React.memo(() => {
         <Gmail />
       </span>
       Gmail
-    </button>
+    </motion.button>
   )
 })

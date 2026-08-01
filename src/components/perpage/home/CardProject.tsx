@@ -10,7 +10,6 @@ interface Props {
   web?: string
   npm?: string
   github: string
-  project?: string
   test?: string
 }
 
@@ -21,7 +20,7 @@ const TYPE_STYLES: Record<Props['type'], { label: string; color: string }> = {
 }
 
 export const CardProject = React.memo(
-  ({ name, type, desc, tech, web, npm, github, project, test }: Props) => {
+  ({ name, type, desc, tech, web, npm, github, test }: Props) => {
     const { label, color } = TYPE_STYLES[type]
 
     return (
@@ -81,16 +80,6 @@ export const CardProject = React.memo(
             >
               visitar
             </a>
-          )}
-          {project && <VerticalSeparator />}
-          {project && (
-            <Link
-              to="/project/$id"
-              params={{ id: project }}
-              className="font-mono text-xs text-purple-400 hover:text-purple-300 transition-colors"
-            >
-              ver proyecto
-            </Link>
           )}
           {test && <VerticalSeparator />}
           {test && (

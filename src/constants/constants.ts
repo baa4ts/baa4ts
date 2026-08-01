@@ -25,7 +25,6 @@ export const constants = {
       ],
       web: 'https://craft9bind.vercel.app',
       github: 'https://github.com/baa4ts/craft9bind',
-      project: 'craft9bind',
     },
     {
       name: 'crypto-edge',

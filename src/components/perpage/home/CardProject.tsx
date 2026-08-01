@@ -1,5 +1,4 @@
 import { VerticalSeparator } from '#/components/shared/VerticalSeparator'
-import { Link } from '@tanstack/react-router'
 import React from 'react'
 
 interface Props {

@@ -56,7 +56,7 @@ function Home() {
               label="NPM"
               link="https://www.npmjs.com/~baa4ts"
             />
-            <ContactIcon icono={LinkedIn} label="Linkedin" link="" />
+            <ContactIcon icono={LinkedIn} label="Linkedin" link="https://www.linkedin.com/in/carlos-morales-384697332" />
           </div>
         </div>
       </article>

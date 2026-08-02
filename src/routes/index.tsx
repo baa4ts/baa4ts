@@ -19,6 +19,7 @@ import { ContactIcon } from '#/components/perpage/home/ContactIcon'
 import { NPM } from '#/components/constants/npm'
 import { GitHub } from '#/components/constants/Github'
 import { GmailNoScrap } from '#/components/perpage/home/GmailNoScrap'
+import { CV } from '#/components/constants/CV'
 
 export const Route = createFileRoute('/')({
   ssr: true,
@@ -61,6 +62,7 @@ function Home() {
               label="Linkedin"
               link="https://www.linkedin.com/in/carlos-morales-384697332"
             />
+            <ContactIcon icono={CV} label="CV" link="/cv" />
           </div>
         </div>
       </article>

@@ -1,19 +1,17 @@
-import { GenerarCV } from '#/functions/cv/generarCV'
-import { renderToStream } from '@react-pdf/renderer'
+import { GenerarCV } from '#/functions/cv/GenerarCV'
+import { renderToBuffer } from '@react-pdf/renderer'
 import { createFileRoute } from '@tanstack/react-router'
-import { Readable } from 'node:stream'
 
 export const Route = createFileRoute('/cv/')({
   server: {
     handlers: {
       GET: async () => {
-        const nodeStream = await renderToStream(<GenerarCV />)
-        const webStream = Readable.toWeb(nodeStream as unknown as Readable)
+        const pdfBuffer = await renderToBuffer(<GenerarCV />)
 
-        return new Response(webStream as unknown as BodyInit, {
+        return new Response(new Uint8Array(pdfBuffer), {
           headers: {
             'Content-Type': 'application/pdf',
-            'Content-Disposition': 'inline; filename="cv-carlos.pdf"',
+            'Content-Disposition': 'inline; filename="Carlos-Morales-Cv.pdf"',
           },
         })
       },

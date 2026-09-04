@@ -151,7 +151,7 @@ export const GenerarCV = () => {
           <View style={{ paddingHorizontal: 15 }}>
             <SubseccionTitulo text="Tec. en Redes y Software — En curso - Polo Educativo Tecnológico Melo / IAE" />
             <Bullet text="Cisco Packet Tracer" />
-            <Bullet text="Linux, Docker, BIND9, Nftables y SSH" />
+            <Bullet text="Linux, Docker, BIND9, NGINX, Nftables y SSH" />
             <Bullet text="Backend con Express.js y Node.js" />
             <Bullet text="TypeScript" />
             <Bullet text="MySQL y diseno de bases de datos" />

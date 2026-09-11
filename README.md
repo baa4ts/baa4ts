@@ -16,6 +16,8 @@ Estudiante de Redes y Software. Me especializo en backend y sistemas, aunque úl
 [![](https://komarev.com/ghpvc/?username=baa4ts&icon=0&color=0)](https://visitcount.itsvg.in)
 
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+```
 deb http://deb.debian.org/debian trixie main
 deb http://deb.debian.org/debian trixie-updates main
 deb http://security.debian.org/debian-security trixie-security main
+```
